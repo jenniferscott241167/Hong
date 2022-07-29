@@ -146,10 +146,12 @@ class DeleteAccountView(LoginRequiredMixin, View):
 Error Handlers
 """
 
-def handler_500(request):
-    return render(request,"500.html")
+
 
 def handler_404(request,exception):
-    return render(request,"404.html")
+    return render(request,"404.html", status=404)
 def handler_403(request,exception):
     return render(request,"403.html")
+
+def handler_500(request):
+    return render(request,"500.html")

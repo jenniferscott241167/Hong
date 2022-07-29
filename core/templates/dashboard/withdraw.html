@@ -54,7 +54,7 @@
                             {% csrf_token %}
                 <input type="hidden" name="_token" value="b8g2loCK5WWEDr8FC3o79o4LgnaZaxT9hTzP7mUR">                <div class="form-group">
                     <label>Withdrawal Amount ( USD )</label>
-                    <input required placeholder="Enter deposit amount" name="amount" type="number" class="form-control"
+                    <input required placeholder="Enter withdrawal amount" name="amount" type="number" class="form-control"
                         name="btc_fund">
                         <span class="error-text">{{form.amount.errors|default:""}}</span>
                 </div>

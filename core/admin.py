@@ -20,12 +20,14 @@ class OwnersAdminSite(admin.sites.AdminSite):
 
 class UserAdmin(DjangoUserAdmin):
     fieldsets = (
-        (None,{"fields":("email","password")}),
-        ("Personal info",{"fields":("first_name","last_name")}),
+        (None,{"fields":("username","email","password")}),
+        ("Personal info",{"fields":("full_name","country","phonenumber")}),
         ("Permission",{"fields":("is_active","is_staff","is_superuser","groups","user_permissions")}),
         ("Important dates",{"fields":("last_login","date_joined")}),
     )
-    add_fieldsets = ((None,{"classes":("wide",),"fields":("email","password1","password2")}))
+    # add_fieldsets = DjangoUserAdmin.add_fieldsets +((None,{'fields':('email','full_name','country','phonenumber')}))
+    add_fieldsets = ((None,{"classes":("wide",),"fields":('full_name',"email",'username','country','phonenumber',"password1","password2")}),)
+
 
     list_display = ("full_name","username","email","phonenumber","country","is_active","is_staff")
     search_fields = ("email","username","full_name")

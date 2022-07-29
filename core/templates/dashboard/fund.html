@@ -32,7 +32,7 @@
             <div class="alert alert-dark rounded-pill" role="alert">
                 Contact support@coinface.com for other payment methods
             </div>
-            <p>Please Note that Minimum Fund Amount is $500. Contact support@coinface.com for a more detailed
+            <p>Please Note that Minimum Fund Amount is $5000. Contact support@coinface.com for a more detailed
                 description.<br>
             </p>
             <ul>
@@ -53,15 +53,15 @@
                 <div class="form-group">
                     <label>Fund Amount ( USD )</label>
                     <input type="number" min="500" class="form-control" name="amount">
-                    <small class="form-text text-muted">Minimum deposit amount is $500</small>
+                    <small class="form-text text-muted">Minimum deposit amount is $5000</small>
                 </div>
                 <div class="form-group">
                     <label>Username</label>
-                    <input type="text" class="form-control" value="p900a" name="username" readonly>
+                    <input type="text" class="form-control" value="{{request.user.username}}" name="username" readonly>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" class="form-control" value="tispelalta@vusra.com" name="email" readonly>
+                    <input type="email" class="form-control" value="{{request.user.email}}" name="email" readonly>
                 </div>
                 <div class="form-group">
                     <label>Send Payment To: </label>
