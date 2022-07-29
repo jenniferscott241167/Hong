@@ -97,3 +97,11 @@ class Withdraw(models.Model):
 
     def __str__(self):
         return str(self.user.email)
+
+
+class Settings(models.Model):
+    name = models.CharField(max_length = 50)
+    value = models.CharField(max_length = 1000)
+
+    def __str__(self):
+        return str(self.name)+" - "+str(self.value)

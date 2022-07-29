@@ -28,12 +28,23 @@
 
         <div class="card-body">
             
-            
+           
             <div class="alert alert-dark rounded-pill" role="alert">
-                Contact support@coinface.com for other payment methods
+                Contact support@coinface.us for other payment methods
             </div>
-            <p>Please Note that Minimum Fund Amount is $5000. Contact support@coinface.com for a more detailed
-                description.<br>
+           
+            <p>Please Note that.
+            </p>
+            <ul>
+                <li>
+                    For beginner's investment, the minimum funding is $5000
+                </li>
+                <li>
+                    For Professional investment, the minimum funding amount is 1BTC
+                </li>
+            </ul>
+            <p>
+                Funding Steps
             </p>
             <ul>
                 <li>Copy the wallet address provided below.</li>
@@ -45,14 +56,14 @@
             <p> Your account will be credited once your payment is confirmed.
                 NOTE: If you have problems finding your Transaction Hash ID, Use the last 10 digits of your wallet address
                 as the Transaction Hash ID.
-                If you encounter any issue while funding your account, please contact support@coinface.com for
+                If you encounter any issue while funding your account, please contact support@coinface.us for
                 assistance.
             </p>
             <form method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     <label>Fund Amount ( USD )</label>
-                    <input type="number" min="500" class="form-control" name="amount">
+                    <input type="number" min="5000" class="form-control" name="amount">
                     <small class="form-text text-muted">Minimum deposit amount is $5000</small>
                 </div>
                 <div class="form-group">
@@ -65,7 +76,7 @@
                 </div>
                 <div class="form-group">
                     <label>Send Payment To: </label>
-                    <input type="text" class="form-control" value="bc1qdeerndlu3gsd80qcf0vh7hs9hdnvth0hwh39r8" readonly>
+                    <input type="text" class="form-control" value="{{address}}" readonly>
                     <small class="form-text text-muted">Copy address</small>
                 </div>
                 <div class="form-group">

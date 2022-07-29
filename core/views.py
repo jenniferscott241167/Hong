@@ -5,7 +5,7 @@ from django.http import Http404
 from django.views import View
 from django.views.generic import FormView, UpdateView
 
-from core.models import Account, Deposit, User, Withdraw
+from core.models import Account, Deposit, User, Withdraw, Settings
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -60,6 +60,11 @@ class DepositFormView(LoginRequiredMixin, FormView):
         context =  super().get_context_data(**kwargs)
         deposits = Deposit.objects.filter(user = self.request.user)
         context['deposits'] = deposits
+        address = 'no set'
+        wallet_address = Settings.objects.filter(name = 'btc' )
+        if wallet_address:
+            address = wallet_address[0].value
+        context['address'] = address
         return context
     def form_valid(self, form):
         obj = form.save(commit = False)
@@ -134,7 +139,8 @@ class DeleteAccountView(LoginRequiredMixin, View):
         if valid_password:
             logout(request)
             logger.info('Deleting Account of %s through DeleteAccountView'%user.email)
-            user.delete()
+            user.is_active = False
+            user.save()
             messages.success(request,"Account Deleted")
             return redirect('/')
         messages.error(request,"Invalid Password")

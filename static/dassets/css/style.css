@@ -343,7 +343,7 @@ Sidemenu CSS
   width: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  background: #e1000a;
+  background: #2088aa;
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item .nav-link.collapsed-nav-link {
@@ -367,7 +367,7 @@ Sidemenu CSS
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item .nav-link:hover {
   background-color: #f9ecef;
-  color: #e1000a;
+  color: #2088aa;
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item .nav-link:hover::before {
@@ -377,12 +377,12 @@ Sidemenu CSS
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item .nav-link:hover .icon {
   -webkit-transform: rotateY(-180deg);
           transform: rotateY(-180deg);
-  color: #e1000a;
+  color: #2088aa;
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item.mm-active .nav-link {
-  background-color: #f9ecef;
-  color: #e1000a;
+  background-color: #c9f5ff;
+  color: #2088aa;
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item.mm-active .nav-link::before {
@@ -390,7 +390,7 @@ Sidemenu CSS
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item.mm-active .nav-link .icon {
-  color: #e1000a;
+  color: #2088aa;
 }
 
 .sidemenu-area .sidemenu-body .sidemenu-nav .nav-item.mm-active .nav-link.collapsed-nav-link::after {
@@ -1829,13 +1829,13 @@ Main Content CSS
 }
 
 .ecommerce-stats-area .row .col-lg-3:nth-child(2) .single-stats-card-box .icon {
-  background-color: #13bb37;
+  background-color: #7725cf;
   -webkit-box-shadow: 1px 5px 24px 0 rgba(19, 187, 55, 0.15);
           box-shadow: 1px 5px 24px 0 rgba(19, 187, 55, 0.15);
 }
 
 .ecommerce-stats-area .row .col-lg-3:nth-child(3) .single-stats-card-box .icon {
-  background-color: #ff4b00;
+  background-color: #1f8976;
   -webkit-box-shadow: 1px 5px 24px 0 rgba(255, 75, 0, 0.15);
           box-shadow: 1px 5px 24px 0 rgba(255, 75, 0, 0.15);
 }
@@ -1845,7 +1845,7 @@ Main Content CSS
 }
 
 .ecommerce-stats-area .row .col-lg-3:nth-child(4) .single-stats-card-box .icon {
-  background-color: #4788ff;
+  background-color: #0ab8c8;
   -webkit-box-shadow: 1px 5px 24px 0 rgba(71, 136, 255, 0.15);
           box-shadow: 1px 5px 24px 0 rgba(71, 136, 255, 0.15);
 }
@@ -1859,7 +1859,7 @@ Main Content CSS
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background-color: #e1000a;
+  background-color: #d81ea3;
   position: absolute;
   left: 0;
   top: 46%;

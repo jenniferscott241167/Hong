@@ -53,8 +53,14 @@ class AccountAdmin(admin.ModelAdmin):
     list_display = ('user','invested_balance','profit_balance','profit')
     search_fields = ('user',)
 
+class SettingsAdmin(admin.ModelAdmin):
+    list_display = ('name','value')
+    search_fields = ('name',)
+
+
 main_admin = OwnersAdminSite()
 main_admin.register(Withdraw,WithdrawAdmin)
 main_admin.register(Deposit,DepositAdmin)
 main_admin.register(Account,AccountAdmin)
 main_admin.register(User,UserAdmin)
+main_admin.register(Settings,SettingsAdmin)
