@@ -1,0 +1,210 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block extrastyle %}
+   <!-- App CSS -->
+   <link rel="stylesheet" href="{% static '/dassets/css/app.css' %}">
+{% endblock %}
+{% block content %}
+            <!-- Page Heading -->
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Profile
+        </h2>
+    </div>
+</header>
+            
+            <!-- Page Content -->
+            <main>
+                <div>
+<div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+                            <div wire:id="ayXy0GfWeUMoXVNrfyk9" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;ayXy0GfWeUMoXVNrfyk9&quot;,&quot;name&quot;:&quot;profile.update-profile-information-form&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;dashboard\/user\/profile&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;290f1519&quot;,&quot;data&quot;:{&quot;state&quot;:{&quot;id&quot;:21,&quot;full_name&quot;:&quot;Joseph Page&quot;,&quot;username&quot;:&quot;p900a&quot;,&quot;email&quot;:&quot;tispelalta@vusra.com&quot;,&quot;phone_no&quot;:&quot;!18562563256&quot;,&quot;role&quot;:&quot;user&quot;,&quot;stock_starts&quot;:&quot;0&quot;,&quot;invested&quot;:&quot;0&quot;,&quot;wallet_balance&quot;:&quot;0&quot;,&quot;country&quot;:&quot;United States&quot;,&quot;email_verified_at&quot;:null,&quot;old&quot;:&quot;Oliver@147&quot;,&quot;current_team_id&quot;:null,&quot;profile_photo_path&quot;:null,&quot;created_at&quot;:&quot;2022-07-26T12:20:34.000000Z&quot;,&quot;updated_at&quot;:&quot;2022-07-26T12:20:34.000000Z&quot;,&quot;profile_photo_url&quot;:&quot;https:\/\/ui-avatars.com\/api\/?name=&amp;color=7F9CF5&amp;background=EBF4FF&quot;},&quot;photo&quot;:null},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;ff47e03ff8b573766a551714edcd9c5b6a22992d5f1ae239bb45f1d2a96ec27c&quot;}}" class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+    <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium text-gray-900">Profile Information</h3>
+
+        <p class="mt-1 text-sm text-gray-600">
+            Update your account&#039;s profile information and email address.
+        </p>
+    </div>
+</div>
+
+    <div class="mt-5 md:mt-0 md:col-span-2">
+        <form action="" method="post">
+            <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
+                {% csrf_token %}
+                    <!-- Profile Photo -->
+                    {{userform.errors}}
+        <!-- Name -->
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="fullName">
+    Full Name
+</label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="fullName" value="{{userform.full_name.value|default:''}}" type="text" name="full_name" autocomplete="full_name" required>
+            <span class="error-text">{{userform.full_name.errors|default:""}}</span>
+        </div>
+        <!-- username -->
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="username">
+    Username
+</label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="username" value="{{userform.username.value|default:''}}" type="text" name="username" autocomplete="username" required>
+            <span class="error-text">{{userform.username.errors|default:""}}</span>
+        </div>
+        <!-- Email -->
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="email">
+    Email
+</label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="email" value="{{userform.email.value|default:''}}" type="email" name="email" required>
+            <span class="error-text">{{userform.email.errors|default:""}}</span>
+        </div>
+        <!-- Phone number-->
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="phonenumber">
+    Phone Number
+</label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="country" type="text" value="{{userform.phonenumber.value|default:''}}" name="phonenumber" autocomplete="country" required>
+            <span class="error-text">{{userform.phonenumber.errors|default:""}}</span>
+        </div>
+        <!--countrys -->
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="country">
+    Country
+</label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="country" type="text" value="{{userform.country.value|default:''}}" name="country" autocomplete="country" required>
+            <span class="error-text">{{userform.country.errors|default:""}}</span>
+        </div>
+            </div>
+
+            <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+                <input type="submit" name="submit" value="save" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+            </div>
+             </div>
+    </form>
+    </div>
+</div>
+
+                            <div class="mt-10 sm:mt-0">
+                    <div wire:id="cPrCj1DoRr4HdW9CY9Zq" wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;cPrCj1DoRr4HdW9CY9Zq&quot;,&quot;name&quot;:&quot;profile.update-password-form&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;dashboard\/user\/profile&quot;,&quot;method&quot;:&quot;GET&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;08372d44&quot;,&quot;data&quot;:{&quot;state&quot;:{&quot;current_password&quot;:&quot;&quot;,&quot;password&quot;:&quot;&quot;,&quot;password_confirmation&quot;:&quot;&quot;}},&quot;dataMeta&quot;:[],&quot;checksum&quot;:&quot;a04994ceb5aacf583b407fa6cf56a289d0e6c9c3cb4b7f8374f36882caef82d1&quot;}}" class="md:grid md:grid-cols-3 md:gap-6">
+    <div class="md:col-span-1">
+    <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium text-gray-900">Update Password</h3>
+        <p class="mt-1 text-sm text-gray-600">
+            Ensure your account is using a long, random password to stay secure.
+        </p>
+    </div>
+</div>
+
+    <div class="mt-5 md:mt-0 md:col-span-2">
+        <form method="post">
+            {% csrf_token %}
+            <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
+                <div class="grid grid-cols-6 gap-6">
+                    <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="current_password">
+                Current Password
+            </label>
+            <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" 
+            value="{{passwordform.old_password.value|default:''}}"
+            id="current_password" type="password" name="old_password" autocomplete="current-password" required>
+            <span class="error-text">{{passwordform.old_password.errors|default:""}}</span>            
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="password">
+                New Password
+            </label>
+            <input  value="{{passwordform.new_password1.value|default:''}}" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="password" type="password" name="new_password1" autocomplete="new-password" required>
+            <span class="error-text">{{passwordform.new_password1.errors|default:""}}</span>                   
+        </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <label class="block font-medium text-sm text-gray-700" for="password_confirmation">
+                Confirm Password
+            </label>
+            <input value="{{passwordform.new_password2.value|default:''}}" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" id="password_confirmation" type="password" name="new_password2" autocomplete="new-password" required>
+            <span class="error-text">{{passwordform.new_password2.errors|default:""}}</span>                
+        </div>
+                </div>
+            </div>
+
+        <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md">
+            <input type="submit" name="submit" value="update" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
+        </div>
+        </form>
+    </div>
+        </div>
+    </div>
+            
+                        
+
+            
+            <div class="mt-10 sm:mt-0">
+                <div class="md:grid md:grid-cols-3 md:gap-6" >
+
+
+    
+                <div class="mt-10 sm:mt-0">
+                    <div class="md:grid md:grid-cols-3 md:gap-6 md:col-span-1" >
+    <div class="px-4 sm:px-0">
+        <h3 class="text-lg font-medium text-gray-900">Delete Account</h3>
+
+        <p class="mt-1 text-sm text-gray-600">
+            Permanently delete your account.
+        </p>
+    </div>
+</div>
+
+    <div class="mt-5 md:mt-0 md:col-span-2">
+        <div class="px-4 py-5 sm:p-6 bg-white shadow sm:rounded-lg">
+            <div class="max-w-xl text-sm text-gray-600">
+            Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+            </div>
+
+        <div class="mt-5">
+            <button data-toggle="modal" data-target="#exampleModal" type="button" class="inline-flex items-center justify-center px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-500 focus:outline-none focus:border-red-700 focus:shadow-outline-red active:bg-red-600 transition ease-in-out duration-150" wire:click="confirmUserDeletion" wire:loading.attr="disabled">
+                Delete Account
+            </button>
+        </div>
+
+        </div>
+    </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form method="post" action="{% url 'delete-account' %}">
+            {% csrf_token %}
+        <div class="modal-body">
+            Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
+            <div class="mt-3">
+                <label class="block font-medium text-sm text-gray-700" for="current_password">
+                    Password
+                </label>
+                <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" 
+                value="{{passwordform.old_password.value|default:''}}"
+                id="current_password" type="password" name="password" autocomplete="password" required>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="submit" class="btn btn-danger">Delete Account</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+                </div>
+                    </div>
+                </div>
+            </main>
+
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <section class="banner-area">
+            <div class="banner-overlay">
+                <div class="banner-text text-center">
+                    <div class="container">
+                        <!-- Section Title Starts -->
+                        <div class="row text-center">
+                            <div class="col-xs-12">
+                                <!-- Title Starts -->
+                                <h2 class="title-head">our <span>services</span></h2>
+                                <!-- Title Ends -->
+                                <hr>
+                                <!-- Breadcrumb Starts -->
+                                <ul class="breadcrumb">
+                                    <li><a href="{% url 'index' %}"> home</a></li>
+                                    <li>services</li>
+                                </ul>
+                                <!-- Breadcrumb Ends -->
+                            </div>
+                        </div>
+                        <!-- Section Title Ends -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Banner Area Ends -->
+        <!-- Section Services Starts -->
+        <section class="services">
+            <div class="container">
+                <div class="row">
+                    <!-- Service Box Starts -->
+                    <div class="col-md-6 service-box">
+                        <div>
+                            <img id="add-bitcoins" src="{% static 'asset/images/icons/orange/add-bitcoins.png' %}" alt="add bitcoins">
+                            <div class="service-box-content">
+                                <h3>Bitcoin Mining</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Box Ends -->
+                    <!-- Service Box Starts -->
+                    <div class="col-md-6 service-box">
+                        <div>
+                            <img id="strong-security" src="{% static 'asset/images/icons/orange/strong-security.png' %}" alt="strong security"/>
+                            <div class="service-box-content">
+                                <h3>Forex/Crypto Investments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Box Ends -->
+                    <!-- Service Box Starts -->
+                    <div class="col-md-6 service-box">
+                        <div>
+                            <img id="world-coverage" src="{% static 'asset/images/icons/orange/world-coverage.png' %}" alt="world coverage"/>
+                            <div class="service-box-content">
+                                <h3>Financial Updates and Advisory</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Service Box Ends -->
+                    <!-- Service Box Starts -->
+                    <div class="col-md-6 service-box">
+                        <div>
+                            <img id="payment-options" src="{% static 'asset/images/icons/orange/payment-options.png' %}" alt="payment options"/>
+                            <div class="service-box-content">
+                                <h3>Bitcoin Investment</h3>
+                                </div>
+                        </div>
+                    </div>
+                    <!-- Service Box Ends -->
+<!-- Service Box Starts -->
+                    <div class="col-md-12 service-box">
+                        <div>
+                            <div class="service-box-content">
+                                <h3 class="text-center">How CoinFace Works</h3>
+                                <p>You purchase into any of our investment plans and sign the contract. As soon as your account starts trading, you earn a percentage of your initial investments weekly with respect to the chosen investment options just as in auto trading investments depending on the market results.
+<br><br>
+The PROTRADE Account is an investment service that gives investors the opportunity to make money without trading themselves on Forex or Bitcoin Trading. The trading market is very mobile and can change its direction several times a day. To extraction of profit from every movements, you need to clearly forecast the time and direction of each transaction. Thus, need to have a deep knowledge of the Currency and crypto currency market. Our service opens the possibilities for customers who do not have such knowledge or the time to trade by themselves, but wishing to make a profit.
+<br><br>
+The Basic idea behind the PROTRADE Account is that PROTRADE opens a separate Account for our different investment plans, allocating a certain amount of its initial investment as the Manager's Capital. We will be unable to withdraw from this amount (an additional regulated incentive for us to demonstrate caution in our trading).
+This means that we begin making trades on the account using both our personal capital and the funds of our investors. Profits on the account are divided with equal percentages among the investors, based on their share in their chosen plans. Just like the stocks, the markets are very volatile and our auto trading system is built well monitored to maximize our profits . Therefore Most days PROTRADE will earn much greater than the stipulated profit. However, we will hold the extra income as reserves for days when we do not reach the mark. This will allow us to be fully sustainable for many years to come. And giving profits to our investors.
+<br><br>
+An added way a our investors can work on developing his Account is by bringing in others to join in our venture. When an active investor brings in new investors to the any account, they are paid a percentage as compensation for each client they refer.
+Any PROTRADE investor can take part in the Partnership Programs after signing up with us.
+<br><br>
+Using our platform will enable you to make profits from your bitcoin invested with us through collaborative mining activities. With this platform, your Bitcoin is expected to grow in profit daily within your investment life cycle. At the end of the investment contract of (6 months) your initial investment will be returned to you, after a 1.5% tax/closing/maintenance fees has been deducted.</p>
+                                </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </section>
+
+      <section class="call-action-all">
+        <div class="call-action-all-overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="action-text">
+                  <h2>Join Other Registered Users</h2>
+                  <p class="lead">Open account today and start trading!</p>
+                </div>
+                <p class="action-btn">
+                    <a  href="{% url 'register' %}" class="btn btn-primary">Register Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}

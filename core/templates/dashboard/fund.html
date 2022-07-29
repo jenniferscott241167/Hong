@@ -1,0 +1,128 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+        <!-- Main Content Layout -->
+            <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area">
+        <h1>Dashboard</h1>
+        <ol class="breadcrumb">
+            <li class="item">
+                <a href="{% url 'dashboard' %}"><i class='fa fa-home'></i></a>
+            </li>
+            <li class="item">Dashboard</li>
+            <li class="item">Deposits</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+
+
+    <!-- Start -->
+    <div class="card mb-30">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h3>Fund account
+                <pre>via Bitcoin</pre>
+            </h3>
+
+        </div>
+
+        <div class="card-body">
+            
+            
+            <div class="alert alert-dark rounded-pill" role="alert">
+                Contact support@coinface.com for other payment methods
+            </div>
+            <p>Please Note that Minimum Fund Amount is $500. Contact support@coinface.com for a more detailed
+                description.<br>
+            </p>
+            <ul>
+                <li>Copy the wallet address provided below.</li>
+                <li>Make payment from your Bitcoin wallet. (Send the equivalent bitcoin amount of the amount you wish to
+                    invest).</li>
+                <li>Provide your transaction hash ID. This can be gotten from your wallet after payment.</li>
+                <li>Click on Submit.</li>
+            </ul>
+            <p> Your account will be credited once your payment is confirmed.
+                NOTE: If you have problems finding your Transaction Hash ID, Use the last 10 digits of your wallet address
+                as the Transaction Hash ID.
+                If you encounter any issue while funding your account, please contact support@coinface.com for
+                assistance.
+            </p>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Fund Amount ( USD )</label>
+                    <input type="number" min="500" class="form-control" name="amount">
+                    <small class="form-text text-muted">Minimum deposit amount is $500</small>
+                </div>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" value="p900a" name="username" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" class="form-control" value="tispelalta@vusra.com" name="email" readonly>
+                </div>
+                <div class="form-group">
+                    <label>Send Payment To: </label>
+                    <input type="text" class="form-control" value="bc1qdeerndlu3gsd80qcf0vh7hs9hdnvth0hwh39r8" readonly>
+                    <small class="form-text text-muted">Copy address</small>
+                </div>
+                <div class="form-group">
+                    <label>Wallet Address</label>
+                    <input type="text" class="form-control" name="wallet_address" value="" required>
+                </div>
+                <div class="form-group">
+                    <label>Transaction Hash ID</label>
+                    <input class="form-control" placeholder="Provide your Transaction Hash ID" type="text"
+                        name="transaction_hash" required>
+                </div>
+                <button type="submit" name="btc_submit" class="btn btn-primary">Complete transaction</button>
+            </form>
+
+        </div>
+
+        <div class="card-body" style="overflow-x: auto;">
+            <h1>Deposits</h1>
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        
+                        <th scope="col">Email</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Coin Address</th>
+                        <th scope="col">Transaction Hash</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Date</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for deposit in deposits %}
+                    <tr>
+                    
+                        <td>
+                            {{request.user.email}}
+                        </td>
+                        <td>
+                            {{deposit.amount}}
+                        </td>
+                        <td>
+                            {{deposit.wallet_address}}
+                        </td>
+                        <td>
+                            {{deposit.transaction_hash}}
+                        </td>
+                        <td>
+                            {{deposit.get_status_display}}
+                        </td>
+                        <td>
+                            {{deposit.date}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
