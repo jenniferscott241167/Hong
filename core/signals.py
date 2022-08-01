@@ -38,8 +38,10 @@ def create_account(sender, instance, **kwargs):
 def increase_balance(sender, instance, **kwargs):
     if not instance.pk:
         return
-    instance.profit_balance = instance.profit + instance.invested_balance
-    instance.save()
+    if instance.profit_balance != instance.profit + instance.invested_balance:
+        instance.profit_balance = instance.profit + instance.invested_balance
+        instance.save()
+    
 
     
 
