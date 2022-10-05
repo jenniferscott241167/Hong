@@ -1,7 +1,8 @@
-from ast import Pass
-from email import message
+
+import random
 from django.shortcuts import render, redirect
 from django.http import Http404
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView
 
@@ -12,6 +13,30 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 import logging
+from django.core.mail import send_mail
+from django.http import JsonResponse
+
+
+#helper function
+def send_login_verification_mail(email,token):
+    send_mail(
+    "Login Request",
+    f'You have requested to Login from coinface.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
+    from_email="support@coinface.us",
+    recipient_list=[email],
+    fail_silently=False
+    )
+def send_withdrawal_verification_mail(email,token):
+    send_mail(
+    "Withdrawal Request",
+    f'You have requested a Withdrawal from your account in coinface.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
+    from_email="support@coinface.us",
+    recipient_list=[email],
+    fail_silently=False)
+def generate_token():
+    verification_token = random.randint(100000,999999)
+    return verification_token
+
 
 # Create your views here.
 class ContactView(FormView):
@@ -76,6 +101,10 @@ class WithdrawFormView(LoginRequiredMixin, FormView):
     form_class = forms.WithdrawForm
     success_url = '/withdraw/'
     template_name = "dashboard/withdraw.html"
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
     def get_context_data(self, **kwargs):
         context =  super().get_context_data(**kwargs)
         withdraws = Withdraw.objects.filter(user = self.request.user)
@@ -87,8 +116,69 @@ class WithdrawFormView(LoginRequiredMixin, FormView):
         obj = form.save(commit = False)
         obj.user = self.request.user
         obj.save()
+        if "withdraw_token" in self.request.session:
+            del self.request.session['withdraw_token']
         messages.success(self.request,"Withdrawal Request Sent")
         return super().form_valid(form)
+
+class VerifyWithdrawal(LoginRequiredMixin,View):
+    def post(self,request):
+        if not request.is_ajax():
+            messages.error(request,"Improperly configured request")
+            return redirect(reverse("withdraw"))
+        email = request.user.email
+        token = generate_token()
+        send_withdrawal_verification_mail(email,token)
+        request.session["withdraw_token"] = token
+        return JsonResponse({"status":True})
+
+
+class LoginView(FormView):
+    form_class = forms.AuthenticateForm
+    template_name = "login.html"
+    success_url = reverse_lazy("verify-login")
+
+    def form_valid(self, form):
+        user = form.get_user()
+        token = generate_token()
+        send_login_verification_mail(user.email,token)
+        self.request.session['login_token'] = token
+        self.request.session['user'] = user.email
+        messages.success(self.request,"A verification token has been sent to your email address.")
+        
+        return super().form_valid(form)
+
+
+class VerifyLoginView(View):
+    def get(self,request):
+        if not "login_token" in request.session:
+            return redirect(reverse("login"))
+        return render(request,"verify-login.html")
+    def post(self,request):
+        if not "login_token" in request.session:
+            return redirect(reverse("login"))
+        token = request.POST['token']
+        login_token = request.session['login_token']
+        userEmail = request.session['user']
+        if token == str(login_token):
+            messages.success(request,"Login Successful")
+            login(request,User.objects.get(email = userEmail))
+            del request.session['user']
+            del request.session['login_token']
+            return redirect(reverse("dashboard"))
+        else:
+            # messages.error(request,"Invalid Token")
+            return render(request,"verify-login.html",{"error":"Invalid Token"})
+
+class ResendVerificationMailView(View):
+    def get(self,request):
+        if not "login_token" in request.session or not "user" in request.session:
+            return redirect(reverse("login"))
+        email = request.session['user']
+        token = request.session['login_token']
+        send_login_verification_mail(email, token)
+        messages.success(self.request,"A verification token has been sent to your email address.")
+        return redirect(reverse("verify-login"))
 
 class LogoutView(LoginRequiredMixin, View):
     def get(self,request):
@@ -145,6 +235,9 @@ class DeleteAccountView(LoginRequiredMixin, View):
             return redirect('/')
         messages.error(request,"Invalid Password")
         return redirect('/profile/edit/')
+
+
+
 
 
 

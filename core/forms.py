@@ -70,6 +70,21 @@ class DepositForm(forms.ModelForm):
         exclude = ['user','status']
 
 class WithdrawForm(forms.ModelForm):
+    token = forms.CharField(widget=forms.NumberInput,max_length=6,required=True)
+    def __init__(self,request = None,*args,**kwargs):
+        self.request = request
+        self.user = None
+        super().__init__(*args,**kwargs)
+    def clean(self):
+        if not "withdraw_token" in self.request.session:
+            self.add_error("token","Token Needs to be specified")
+        token = self.cleaned_data.get("token")
+        if not token:
+            self.add_error("token","Token Needs to be specified")
+        if token != str(self.request.session["withdraw_token"]):
+            self.add_error("token","Invalid Token")
+        return super().clean()
+    
     class Meta:
         model = models.Withdraw
         exclude = ['user','status']

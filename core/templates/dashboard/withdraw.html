@@ -49,12 +49,11 @@
         </div>
 
         <div class="card-body">
-                {{ form.errors }}
                         <form method="POST">
                             {% csrf_token %}
-                <input type="hidden" name="_token" value="b8g2loCK5WWEDr8FC3o79o4LgnaZaxT9hTzP7mUR">                <div class="form-group">
+             <div class="form-group">
                     <label>Withdrawal Amount ( USD )</label>
-                    <input required placeholder="Enter withdrawal amount" name="amount" type="number" class="form-control"
+                    <input required placeholder="Enter withdrawal amount" name="amount" value="{{form.amount.value|default:''}}" type="number" class="form-control"
                         name="btc_fund">
                         <span class="error-text">{{form.amount.errors|default:""}}</span>
                 </div>
@@ -79,10 +78,18 @@
                     <label>Description</label>
                     <textarea required name="account_detail" class="form-control"
                         placeholder="Please provide your bitcoin address here if you want to receive payment through bitcoin or the bank account details"
-                        rows="3"></textarea>
+                        rows="3">{{form.account_detail.value|default:''}}</textarea>
                     <span class="error-text">{{form.account_detail.errors|default:""}}</span>
                 </div>
-                <button type="submit" class="btn btn-primary"> Withdraw Funds</button>
+                <div class="form-group">
+                   
+                    <p class="mb-0">A verification token is required to continue with the withdrawal process. <a href="javascript::void(0)" onclick="sendVerifyEmail()">click here</a> to receive the token.</p>
+                    <label>Token</label>
+                    <input required placeholder="Enter Token" value="{{form.token.value|default:''}}" name="token" type="number" class="form-control" >
+                    <span class="error-text">{{form.token.errors|default:""}}</span>
+                </div>
+                <button type="submit" class="btn btn-primary"  data-toggle="modal" data-target="#withdrawModal"> Withdraw Funds</button>
+            
             </form>
 
         </div>
@@ -138,4 +145,34 @@
             </table>
         </div>
     </div>
+{% endblock %}
+{% block extrascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    function sendVerifyEmail(){
+        $.ajax({
+        url:"{% url 'verify-withdraw' %}",
+        method:"post",
+        data:{
+            email:"{{request.user.email}}",
+            csrfmiddlewaretoken:document.querySelector('[name=csrfmiddlewaretoken]').value
+            },
+        success:function(res){
+            swal({
+                title: "Email Sent!",
+                text: "The Token has been sent to your email. check your inbox or spam.",
+                icon: "success",
+                });
+        },
+        error:function(res){
+            swal({
+                title: "Error!",
+                text: "An error occurred while trying to send email. please wait and try again. if error persists, contact support.",
+                icon: "icon",
+                });
+        }
+    })
+    }
+    
+</script>
 {% endblock %}
