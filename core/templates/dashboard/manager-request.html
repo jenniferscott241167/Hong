@@ -1,0 +1,36 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+ 
+            <div class="card shadow-base bd-0 rounded-0 widget-4">
+                <div class="card-body">
+                    <h3 class="text-center">Request to be an Account Manager</h3>
+                    <p>
+                        <ul>
+                            <li>
+                                Your Account must have reached up to USD 1,000,000 and above.
+                            </li>
+                            <li>
+                                You must have a social media that have reached up to 5 years and above.
+                            </li>
+                            <li>
+                                You must be have been trading for seven years and above.
+                            </li>
+                            <li>
+                                Your Social media must be related to your trading skill.
+                            </li>
+                        </ul>
+                    </p>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <textarea required name="description" class="form-control"
+                                placeholder="Please provide your social media details that should involve your profile link"
+                                rows="3"></textarea>
+                        </div>
+                        <input type="submit" value="Request" class="btn btn-success">
+                    </form>
+                </div><!-- card-body -->
+            </div><!-- card -->
+    
+{% endblock %}

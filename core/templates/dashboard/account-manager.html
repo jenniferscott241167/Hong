@@ -1,0 +1,24 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% block content %}
+ 
+    <!-- End Welcome Area -->
+    <!-- Start -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-base bd-0 rounded-0 widget-4">
+                <div class="card-body">
+                    <a href="{% url 'all-manager' %}">View all Managers</a>
+                </div><!-- card-body -->
+            </div><!-- card -->
+            
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow-base bd-0 rounded-0 widget-4">
+                <div class="card-body">
+                    <a href="{% url 'manager-request' %}">Request to be a Manager</a>
+                </div><!-- card-body -->
+            </div><!-- card -->
+        </div>
+    </div>
+{% endblock %}

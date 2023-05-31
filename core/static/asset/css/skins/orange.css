@@ -53,8 +53,7 @@ ul.user li.sign-in a,
 .slider.btn-primary,
 .countdown-amount,
 h4.panel-title a,
-.contact-page-info .contact-info-box i.big-icon,
-.facts .facts-content .heading-facts h2 span,
+.contact-page-info .contact-info-box i.big-icon,.facts-content .heading-facts h2 span,
 .btn-primary.btn-pricing,
 .shop-cart .table .icon-delete-product:hover,
 .shop-cart .table .icon-delete-product:focus, 
@@ -92,7 +91,6 @@ ul.user li.sign-in a:hover,
 #carousel-testimonials .carousel-indicators li.active,
 .widget-tags ul > li a:hover,
 body.blog .pagination li.active a,
-.facts,
 .call-action-all .action-btn .btn-primary {
   background: #fd961a;
 }

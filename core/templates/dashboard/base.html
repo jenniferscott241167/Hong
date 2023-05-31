@@ -17,7 +17,7 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{% static 'dassets/css/responsive.css' %}">
 
-    <title>coinface</title>
+    <title>Naxtrust Expert Traders</title>
     {% block extrastyle %}
     {% endblock %}
 </head>
@@ -28,7 +28,7 @@
     <div class="sidemenu-area">
         <div class="sidemenu-header">
             <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
-                <img src="{% static 'asset/images/logo-dark1.png' %}" alt="logo">
+                <img src="{% static 'asset/images/nax-logo.png' %}" alt="logo">
             </a>
 
             <div class="burger-menu d-none d-lg-block">
@@ -77,9 +77,14 @@
                     </a>
                 </li>
                 <li class="nav-item-title">Support</li>
-
+                <li class="nav-item {% if request.path == '/account-manager/'%}mm-active{% endif%}">
+                    <a href="{% url 'account-manager' %}" class="nav-link">
+                        <span class="icon"><i class='fa fa-user'></i></span>
+                        <span class="menu-title">Account Manager / Expert Traders</span>
+                    </a>
+                </li>
                 <li class="nav-item">
-                    <a href="mailto:support@coinface.us" class="nav-link">
+                    <a href="mailto:support@naxtrust.com" class="nav-link">
                         <span class="icon"><i class='fa fa-headphones'></i></span>
                         <span class="menu-title">Support</span>
                     </a>
@@ -117,7 +122,7 @@
                     </li>
 
                     <li class="nav-item message-box dropdown">
-                        <a href="mailto:support@coinface.us" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                        <a href="mailto:support@naxtrust.com" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             <div class="message-btn">
                                 <i class='fa fa-envelope'></i>
@@ -202,7 +207,7 @@
         <footer class="footer-area">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-sm-6 col-md-6">
-                    <p>Copyright © 2022 <a href="{% url 'index' %}">coinface</a>. All rights
+                    <p>Copyright © 2021 <a href="{% url 'index' %}">Naxtrust</a>. All rights
                         reserved</p>
                 </div>
             </div>
@@ -308,7 +313,7 @@ s0.parentNode.insertBefore(s1,s0);
       "position":"left"
   },
   "brandSetting":{
-      "brandName":"coinface",
+      "brandName":"naxtrust",
       "brandSubTitle":"answers asap",
       "brandImg":"{% static 'asset/images/logo-dark.png' %}",
       "welcomeText":"Hi there!\nHow can I help you?",

@@ -56,14 +56,36 @@
 		- Small Devices
 		- Extra Small Devices
 -------------------------------------------------------------------*/
+/*----
 
+Previous color:
+ div-boxes: #1d1d1d;
+ footer: #0c0c0c;
+ body: #0c0c0c;
+ border-top-color: #222;
+ nav-bg: #111;
+ form-border: #333;
+ form-background: #222;
+ form-placeholder: #666;
+---*/
 /* [ GENERAL ] */
 /*================================================== */
 
 /*** Global Styles ***/
 
 @import url('https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900|Open+Sans:400,600');
-
+:root{
+  --div-box-bg: #144272;
+  --body-bg: #0A2647;
+  --dark-bg: #0A2647;
+  --header-bg: #144272;
+  --footer-bg: #0A2647;
+  --b-top-color: #fff;
+  --nav-bg: #111;
+  --form-border: #1e72d2;
+  --form-background: #144272;
+  --form-placeholder: #dddddd;
+}
 html {
   overflow-x: hidden !important;
   width: 100%;
@@ -76,7 +98,7 @@ body {
   border: 0;
   margin: 0;
   padding: 0;
-  background: #111;
+  background: var(--body-bg);
 }
 
 .wrapper {
@@ -144,11 +166,11 @@ a:focus {
 
 .form-control {
   box-shadow: none;
-  border: 1px solid #333;
+  border: 1px solid var(--form-border);
   padding: 0px 0px 4px 20px;
   height: 46px;
   color: #fff;
-  background: #222;
+  background: var(--form-background);
   font-size: 14px;
   border-radius: 0;
   outline: 0;
@@ -158,28 +180,28 @@ a:focus {
 .form-control:focus {
   box-shadow: none;
   outline: none;
-  border: 1px solid #555;
+  border: 1px solid var(--form-border);
 }
 
 .form-control::-webkit-input-placeholder {
   font-size: 12px;
-  color: #666;
+  color: var(--form-place-holder);
 }  /* WebKit, Blink, Edge */
 .form-control:-moz-placeholder {
   font-size: 12px;
-  color: #666;
+  color: var(--form-place-holder);
 }  /* Mozilla Firefox 4 to 18 */
 .form-control::-moz-placeholder {
   font-size: 12px;
-  color: #666;
+  color: var(--form-place-holder);
 }  /* Mozilla Firefox 19+ */
 .form-control:-ms-input-placeholder {
   font-size: 12px;
-  color: #666;
+  color: var(--form-place-holder);
 }  /* Internet Explorer 10-11 */
 .form-control::-ms-input-placeholder {
   font-size: 12px;
-  color: #666;
+  color: var(--form-place-holder);
 }  /* Microsoft Edge */
 hr {
   background-color: #e7e7e7;
@@ -581,7 +603,7 @@ body.light .shop-checkout .table tbody > tr {
   display: block;
   width: 100%;
   height: 100%;
-  background-color: #111;
+  background-color: #0A2647;
 }
 
 #preloader-content {
@@ -644,7 +666,7 @@ body.light .shop-checkout .table tbody > tr {
 /*================================================== */
 
 .header {
-  background: #1d1d1d;
+  background: var(--header-bg);
 }
 
 /*** Logo ***/
@@ -801,7 +823,7 @@ ul.user li.sign-in a {
 .site-nav-inner {
   position: absolute;
   z-index: 100;
-  background: #111;
+  background: var(--nav-bg);
   text-align: center;
   width: 100%;
   left: 0;
@@ -1273,7 +1295,7 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
 }
 
 .features-row {
-  background: #1d1d1d;
+  background: var(--div-box-bg);
   padding: 60px 50px 50px 50px;
   margin-left: 0;
   margin-right: 0;
@@ -1463,7 +1485,7 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
 /*** Features and Video ***/
 
 .image-block {
-  background: #1d1d1d;
+  background: var(--div-box-bg);
   padding: 0;
 }
 
@@ -1705,7 +1727,7 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
 }
 
 .pricing-wrapper > li {
-  background-color: #1d1d1d;
+  background-color: var(--div-box-bg);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   outline: 1px solid transparent;
@@ -2514,7 +2536,7 @@ section.services {
 .service-box > div {
   padding: 40px;
   margin-bottom: 30px;
-  background: #1d1d1d;
+  background: var(--div-box-bg);
 }
 
 /*** Blog ***/
@@ -2696,7 +2718,7 @@ body.blog .pagination li.active a {
 }
 
 .widget {
-  background: #1d1d1d;
+  background: var(--div-box-bg);
   padding: 30px;
   margin-bottom: 30px;
 }
@@ -3399,7 +3421,7 @@ section.shop-checkout {
   bottom: 0;
   width: 50%;
   z-index: 100;
-  border-bottom: 30px solid #0c0c0c;
+  border-bottom: 30px solid var(--footer-bg);
   -moz-transform: rotate(0.000001deg);
   -webkit-transform: rotate(0.000001deg);
   -o-transform: rotate(0.000001deg);
@@ -3462,7 +3484,7 @@ section.shop-checkout {
 }
 
 .facts .container {
-  background: #222;
+  background: var(--div-box-bg);
   width: 1140px;
   height: 490px;
   margin-top: -135px;
@@ -3569,7 +3591,7 @@ section.shop-checkout {
 
 .user-auth > div:nth-child(2) {
   min-height: 95vh;
-  background: #111;
+  background: var(--body-bg);
 }
 
 .user-auth > div:nth-child(2) .copyright-text {
@@ -3897,7 +3919,7 @@ h4.panel-title a.collapsed:before {
 /*================================================== */
 
 .footer {
-  background: #0c0c0c;
+  background: var(--footer-bg);
 }
 
 .footer .top-footer {
@@ -4029,7 +4051,7 @@ h4.panel-title a.collapsed:before {
 .footer .bottom-footer p {
   margin: 0;
   font-size: 13px;
-  border-top: 1px solid #222;
+  border-top: 1px solid var(--b-top-color);
   padding: 13px 0;
 }
 

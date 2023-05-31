@@ -1094,11 +1094,11 @@ ul.nav.nav-tabs li a:hover, ul.nav.nav-tabs li.active a:hover {
 }
 
 #main-slide .item.item-1 {
-  background-image: url('../images/slider/bg1.jpg');
+  background-image: url("../images/slider/bg1.19a0af9cb467.jpg");
 }
 
 #main-slide .item.item-2 {
-  background-image: url('../images/slider/bg2.jpg');
+  background-image: url("../images/slider/bg2.38cc87ea34b0.jpg");
 }
 
 #main-slide .item:after {
@@ -3410,7 +3410,7 @@ section.shop-checkout {
 .call-action-all {
   padding: 0;
   position: relative;
-  background: url('../images/backgrounds/call-to-action-bg.jpg');
+  background: url("../images/backgrounds/call-to-action-bg.c1d8b9974bbc.jpg");
   background-size: cover;
   background-position: center center;
 }
@@ -3660,15 +3660,15 @@ section.shop-checkout {
 }
 
 #carousel-testimonials .item.item-1 {
-  background-image: url('../images/backgrounds/bg-user.jpg');
+  background-image: url("../images/backgrounds/bg-user.c99caa2902d5.jpg");
 }
 
 #carousel-testimonials .item.item-2 {
-  background-image: url('../images/backgrounds/bg-user-2.jpg');
+  background-image: url("../images/backgrounds/bg-user-2.8a9c84d63ac6.jpg");
 }
 
 #carousel-testimonials .item.item-3 {
-  background-image: url('../images/backgrounds/bg-user-3.jpg');
+  background-image: url("../images/backgrounds/bg-user-3.ba5be92eb000.jpg");
 }
 
 #carousel-testimonials .carousel-control {

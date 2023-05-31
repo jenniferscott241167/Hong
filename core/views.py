@@ -1,12 +1,14 @@
 
 import random
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.http import Http404
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.views.generic import FormView, UpdateView
+from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -236,8 +238,29 @@ class DeleteAccountView(LoginRequiredMixin, View):
         messages.error(request,"Invalid Password")
         return redirect('/profile/edit/')
 
+class AccountManagerView(LoginRequiredMixin, View):
+    def get(self,request):
+       
+        return render(request,"dashboard/account-manager.html")
 
+class AllAccountManagerView(LoginRequiredMixin,ListView):
+    template_name = "dashboard/all-account-managers.html"
 
+    def get_queryset(self):
+        return AccountManager.objects.all()
+    
+class ManagerRequestView(LoginRequiredMixin,View):
+    def get(self, request):
+        return render(request,"dashboard/manager-request.html")
+    def post(self,request):
+        description = request.POST.get("description")
+        check = AccountManager.objects.filter(user = request.user).exists()
+        if check:
+            messages.info(request,"You are already a Manager")
+            return redirect(reverse("manager-request"))
+        ManagerRequests.objects.create(user = request.user, description = description)
+        messages.success(request,"Request sent successfully")
+        return redirect(reverse("manager-request"))
 
 
 

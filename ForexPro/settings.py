@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ls*0)#zozb^h@cx$)d1!669z1d8_4=%6skv5_9%+n@rrs*8zaq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','coinface22.herokuapp.com','www.coinface22.herokuapp.com','www.coinface.us','coinface.us']
+ALLOWED_HOSTS = ['127.0.0.1','www.naxtrust.com']
 
 
 # Application definition
@@ -145,8 +145,8 @@ LOGGING = {
     },
 }
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST_USER = "support@coinface.us"
+EMAIL_HOST_USER = "support@naxtrust.com"
 EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_PASSWORD = "Oliver@147"
+EMAIL_HOST_PASSWORD = "225411"

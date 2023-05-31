@@ -22,5 +22,9 @@ urlpatterns = [
     path('profile/', views.ProfileView.as_view(),name="profile"),
     path('profile/edit/', views.EditProfileView.as_view(),name="edit-profile"),
     path('profile/delete/', views.DeleteAccountView.as_view(),name="delete-account"),
+    path('account-manager/', views.AccountManagerView.as_view(),name="account-manager"),
+    path('account-manager/all/', views.AllAccountManagerView.as_view(),name="all-manager"),
+    path('account-manager/manager-request/', views.ManagerRequestView.as_view(),name="manager-request"),
+
     path('logout/', views.LogoutView.as_view(),name="logout"),
 ]
