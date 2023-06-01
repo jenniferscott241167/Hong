@@ -5,10 +5,10 @@ from django.contrib.auth.admin import Group, UserAdmin as DjangoUserAdmin
 
 class OwnersAdminSite(admin.sites.AdminSite):
 
-    site_header = "CoinFace Admin"
+    site_header = "NaxTrust Admin"
     site_header_color = "black"
     module_caption_color = "#fd961a"
-    site_title = "CoinFace Admin"
+    site_title = "NaxTrust Admin"
     
     def has_permission(self, request):
         return (request.user.is_active and request.user.is_superuser)

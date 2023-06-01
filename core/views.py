@@ -87,11 +87,26 @@ class DepositFormView(LoginRequiredMixin, FormView):
         context =  super().get_context_data(**kwargs)
         deposits = Deposit.objects.filter(user = self.request.user)
         context['deposits'] = deposits
-        address = 'no set'
+        btc_address = 'no set'
+        shib_address = 'no set'
+        usdt_address = 'no set'
+        eth_address = 'no set'
         wallet_address = Settings.objects.filter(name = 'btc' )
+        wallet_eth_address = Settings.objects.filter(name = 'eth' )
+        wallet_usdt_address = Settings.objects.filter(name = 'usdt' )
+        wallet_shib_address = Settings.objects.filter(name = 'shib' )
         if wallet_address:
-            address = wallet_address[0].value
-        context['address'] = address
+            btc_address = wallet_address[0].value
+        if wallet_eth_address:
+            eth_address = wallet_eth_address[0].value
+        if wallet_usdt_address:
+            usdt_address = wallet_usdt_address[0].value
+        if wallet_shib_address:
+            shib_address = wallet_shib_address[0].value
+        context['address'] = btc_address
+        context['eth_address'] = eth_address
+        context['usdt_address'] = usdt_address
+        context['shib_address'] = shib_address
         return context
     def form_valid(self, form):
         obj = form.save(commit = False)
