@@ -84,11 +84,11 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'HOST':'postgres://naxtrust_user:KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd@dpg-chs6bb64dadfn60rsb7g-a',
-        'PORT':'5432',
+        'NAME':'naxtrust',
         'USER':'naxtrust_user',
         'PASSWORD':'KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd',
-        'NAME':'naxtrust'
+        'HOST':'postgres://naxtrust_user:KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd@dpg-chs6bb64dadfn60rsb7g-a.oregon-postgres.render.com/naxtrust',
+        'PORT':'5432',
     }
 }
 
