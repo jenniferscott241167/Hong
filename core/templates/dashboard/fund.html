@@ -75,9 +75,24 @@
                     <input type="email" class="form-control" value="{{request.user.email}}" name="email" readonly>
                 </div>
                 <div class="form-group">
-                    <label>Send Payment To: </label>
+                    <label>Send Payment To BTC Address: </label>
                     <input type="text" class="form-control" value="{{address}}" readonly>
-                    <small class="form-text text-muted">Copy address</small>
+                    <!-- <small class="form-text text-muted">Copy address</small> -->
+                </div>
+                <div class="form-group">
+                    <label>OR Send Payment To ETH Address: </label>
+                    <input type="text" class="form-control" value="{{eth_address}}" readonly>
+                    <!-- <small class="form-text text-muted">Copy address</small> -->
+                </div>
+                <div class="form-group">
+                    <label>OR Send Payment To SHIB Address: </label>
+                    <input type="text" class="form-control" value="{{shib_address}}" readonly>
+                    <!-- <small class="form-text text-muted">Copy address</small> -->
+                </div>
+                <div class="form-group">
+                    <label>OR Send Payment To USDT Address: </label>
+                    <input type="text" class="form-control" value="{{usdt_address}}" readonly>
+                    <!-- <small class="form-text text-muted">Copy address</small> -->
                 </div>
                 <div class="form-group">
                     <label>Wallet Address</label>
