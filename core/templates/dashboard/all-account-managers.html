@@ -1,28 +1,24 @@
-{% extends 'dashboard/base.html' %}
-{% load static %}
-{% block content %}
- 
-    <!-- End Welcome Area -->
-    <!-- Start -->
-        {% for manager in object_list %}
-            <div class="card shadow-base bd-0 rounded-0 widget-4">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-6">
-                            {{manager}}
-                        </div>
-                        <div class="col-6">
-                            {{manager.role}}
-                        </div>
-                    </div>
-                </div><!-- card-body -->
-            </div><!-- card -->
-        {% empty %}
-        <div class="card shadow-base bd-0 rounded-0 widget-4">
-            <div class="card-body">
-                <p class="text-center">No Manager Available</p>
-            </div><!-- card-body -->
-        </div><!-- card -->
-        {% endfor %}
-    
-{% endblock %}
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+
+<!-- End Welcome Area -->
+<!-- Start -->
+{% for manager in object_list %}
+<div class="card shadow-base bd-0 rounded-0 widget-4">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-6">{{manager}}</div>
+      <div class="col-6">{{manager.role|safe}}</div>
+    </div>
+  </div>
+  <!-- card-body -->
+</div>
+<!-- card -->
+{% empty %}
+<div class="card shadow-base bd-0 rounded-0 widget-4">
+  <div class="card-body">
+    <p class="text-center">No Manager Available</p>
+  </div>
+  <!-- card-body -->
+</div>
+<!-- card -->
+{% endfor %} {% endblock %}
