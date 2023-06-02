@@ -32,7 +32,7 @@ def send_withdrawal_verification_mail(email,token):
     send_mail(
     "Withdrawal Request",
     f'You have requested a Withdrawal from your account in coinface.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
-    from_email="support@coinface.us",
+    from_email="support@naxtrust.com",
     recipient_list=[email],
     fail_silently=False)
 def generate_token():
