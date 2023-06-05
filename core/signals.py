@@ -6,7 +6,7 @@ from django.core.mail import send_mail
 
 
 
-def send_withdrawal_success_mail(details,amount):
+def send_withdrawal_success_mail(details,amount,email):
     send_mail(
     "Withdrawal Sucessful",
     f'Your Withdrawal of ${amount} was successfully sent to your provided account detail.\nACCOUNT details:\n{details}\nTRANSACTION STATUS\nSuccessful\n\nKindly confirm \nThanks for Trading with us.',
@@ -39,7 +39,7 @@ def reduce_balance(sender, instance, **kwargs):
         account.save()
         instance.date_approved = timezone.now()
         instance.save()
-        send_withdrawal_success_mail(instance.account_detail,instance.amount)
+        send_withdrawal_success_mail(instance.account_detail,instance.amount, instance.user.email)
     
 @receiver(post_save, sender=User)
 def create_account(sender, instance, **kwargs):
