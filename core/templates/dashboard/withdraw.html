@@ -117,6 +117,7 @@
                         <th scope="col">Amount</th>
                         <th scope="col">Account Details </th>
                         <th scope="col">Status</th>
+                        <th scope="col">Date Approved</th>
                         <th scope="col">Date</th>
                         
                     </tr>
@@ -135,6 +136,9 @@
                         </td>
                         <td>
                             {{withdraw.get_status_display}}
+                        </td>
+                        <td>
+                            {{withdraw.date_approved|default:"Not Approved"}}
                         </td>
                         <td>
                             {{withdraw.date}}

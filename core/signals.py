@@ -2,6 +2,17 @@ from django.db.models.signals import post_delete, pre_save,post_save
 from django.dispatch import receiver
 from .models import Deposit, Withdraw, Account, User
 from django.utils import timezone
+from django.core.mail import send_mail
+
+
+
+def send_withdrawal_success_mail(details,amount):
+    send_mail(
+    "Withdrawal Sucessful",
+    f'Your Withdrawal of ${amount} was successfully sent to your provided account detail.\nACCOUNT details:\n{details}\nTRANSACTION STATUS\nSuccessful\n\nKindly confirm \nThanks for Trading with us.',
+    from_email="support@naxtrust.com",
+    recipient_list=[email],
+    fail_silently=True)
 
 @receiver(post_save, sender=Deposit)
 def increase_balance(sender, instance, **kwargs):
@@ -27,6 +38,7 @@ def reduce_balance(sender, instance, **kwargs):
         account.save()
         instance.date_approved = timezone.now()
         instance.save()
+        send_withdrawal_success_mail(instance.account_detail,instance.amount)
     
 @receiver(post_save, sender=User)
 def create_account(sender, instance, **kwargs):
@@ -41,8 +53,6 @@ def increase_balance(sender, instance, **kwargs):
     if instance.profit_balance != instance.profit + instance.invested_balance:
         instance.profit_balance = instance.profit + instance.invested_balance
         instance.save()
-    
-
     
 
 
