@@ -34,6 +34,7 @@ def reduce_balance(sender, instance, **kwargs):
         account = Account.objects.get(user = instance.user)
         if instance.amount > account.profit:
             account.invested_balance -= (instance.amount - account.profit)
+            account.profit = 0
         account.profit_balance -= instance.amount
         account.save()
         instance.date_approved = timezone.now()
