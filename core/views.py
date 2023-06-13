@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -73,7 +73,8 @@ class RegisterView(FormView):
 class DashboardView(LoginRequiredMixin, View):
     def get(self,request):
         account = Account.objects.get(user = request.user)
-        return render(request, 'dashboard/dashboard.html',{'account':account})
+        trading_history = TradingHistory.objects.filter(user = request.user)
+        return render(request, 'dashboard/dashboard.html',{'account':account,'trading_history':trading_history})
 
 
 class ProfileView(LoginRequiredMixin, View):

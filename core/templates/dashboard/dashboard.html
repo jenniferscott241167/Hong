@@ -1,5 +1,17 @@
 {% extends 'dashboard/base.html' %}
 {% load static %}
+{% block extrastyle %}
+<style>
+    .color-p{
+        color: green;
+        font-weight: bold;
+    }
+    .color-l{
+        color: red;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
 {% block content %}
         <!-- Main Content Layout -->
     <div class="welcome-area">
@@ -255,4 +267,29 @@
                 <!-- TradingView Widget END -->
             </div>
         </div>
+        <div class="card-body" style="overflow-x: auto">
+            <h1>Trading History</h1>
+            <table class="table table-borderless">
+              <thead>
+                <tr>
+                  <th scope="col">Currency type</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for deposit in trading_history %}
+                <tr>
+                  <td>{{deposit.currency}}</td>
+                  <td>{{deposit.amount}}</td>
+                  <td class="color-{{deposit.trading_type}}">{{deposit.get_trading_type_display}}</td>
+                  <td >{{deposit.get_status_display}}</td>
+                  <td>{{deposit.date}}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
 {% endblock %}

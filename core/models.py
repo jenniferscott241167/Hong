@@ -5,6 +5,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 def numeric_validator(value):
     if not value.isnumeric():
@@ -124,3 +125,14 @@ class Settings(models.Model):
 
     def __str__(self):
         return str(self.name)+" - "+str(self.value)
+
+class TradingHistory(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    amount = models.IntegerField()
+    trading_type = models.CharField(max_length=2, choices = (("p","profit"),("l","lose")))
+    status = models.CharField(max_length=10, choices=(("approved","Approved"),("declined","Declined"),("pending","Pending")), default="pending")
+    currency = models.CharField(max_length=30)
+    date = models.DateTimeField(default = timezone.now)
+
+    def __str__(self):
+        return str(self.user.email)
