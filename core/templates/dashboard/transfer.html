@@ -1,0 +1,80 @@
+{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+<!-- Main Content Layout -->
+<!-- Breadcrumb Area -->
+<div class="breadcrumb-area">
+  <h1>Dashboard</h1>
+  <ol class="breadcrumb">
+    <li class="item">
+      <a href="{% url 'dashboard' %}"><i class="fa fa-home"></i></a>
+    </li>
+    <li class="item">Dashboard</li>
+    <li class="item">Transfer</li>
+  </ol>
+</div>
+<!-- End Breadcrumb Area -->
+
+<!-- Start -->
+<div class="card mb-30">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3>
+      Transfer Balance
+      <pre>from one user to another user</pre>
+    </h3>
+  </div>
+
+  <div class="card-body">
+   
+    <form method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>Fund Amount ( USD )</label>
+        <input type="number" min="200" class="form-control" name="amount" />
+        <small class="form-text text-muted"
+          >Minimum deposit amount is $200</small
+        >
+      </div>
+      <div class="form-group">
+        <label>Account Email to Transfer to</label>
+        <input
+          type="email"
+          class="form-control"
+          value="{{request.user.email}}"
+          name="email"
+          readonly
+        />
+      </div>
+      <button type="submit" name="btc_submit" class="btn btn-primary">
+        Complete transaction
+      </button>
+    </form>
+  </div>
+
+  <div class="card-body" style="overflow-x: auto">
+    <h1>Transfers</h1>
+    <table class="table table-borderless">
+      <thead>
+        <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Amount</th>
+          <th scope="col">Coin Address</th>
+          <th scope="col">Transaction Hash</th>
+          <th scope="col">Status</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for deposit in deposits %}
+        <tr>
+          <td>{{request.user.email}}</td>
+          <td>{{deposit.amount}}</td>
+          <td>{{deposit.wallet_address}}</td>
+          <td>{{deposit.transaction_hash}}</td>
+          <td>{{deposit.get_status_display}}</td>
+          <td>{{deposit.date}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

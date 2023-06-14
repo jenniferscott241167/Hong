@@ -46,8 +46,10 @@
   <!-- Wrapper Starts -->
   <div class="wrapper">
     <!-- Header Starts -->
+    <div id="google_translate_element"></div>
     <header class="header">
       <div class="container">
+        
         <div class="row">
           <!-- Logo Starts -->
           <div class="main-logo col-xs-12 col-md-3 col-md-2 col-lg-2 hidden-xs">
@@ -251,7 +253,19 @@ s0.parentNode.insertBefore(s1,s0);
 <!--End of Tawk.to Script-->
 
 
+<script type="text/javascript"
+      src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
 
+  function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+          {pageLanguage: 'en'},
+          'google_translate_element'
+      );
+  }
+</script>
 <script>
   var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?69743';
   var s = document.createElement('script');
