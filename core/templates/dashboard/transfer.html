@@ -1,4 +1,8 @@
-{% extends 'dashboard/base.html' %} {% load static %} {% block content %}
+{% extends 'dashboard/base.html' %} {% load static %}
+{% block extrastyle %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css" integrity="sha512-ELV+xyi8IhEApPS/pSj66+Jiw+sOT1Mqkzlh8ExXihe4zfqbWkxPRi8wptXIO9g73FSlhmquFlUOuMSoXz5IRw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+{% block content %}
 <!-- Main Content Layout -->
 <!-- Breadcrumb Area -->
 <div class="breadcrumb-area">
@@ -23,32 +27,45 @@
   </div>
 
   <div class="card-body">
-   
     <form method="POST">
       {% csrf_token %}
       <div class="form-group">
-        <label>Fund Amount ( USD )</label>
-        <input type="number" min="200" class="form-control" name="amount" />
+        <label>Transfer Amount ( USD )</label>
+        <input
+          type="number"
+          min="10"
+          class="form-control"
+          name="amount"
+          value="{{form.amount.value|default:''}}"
+          required
+        />
         <small class="form-text text-muted"
-          >Minimum deposit amount is $200</small
+          >Minimum transfer amount is $10</small
         >
+        {% if form.amount.errors %}
+        <span class="text-danger"> {{form.amount.errors}} </span>
+        {% endif %}
       </div>
       <div class="form-group">
         <label>Account Email to Transfer to</label>
         <input
           type="email"
           class="form-control"
-          value="{{request.user.email}}"
           name="email"
-          readonly
+          value="{{form.email.value|default:''}}"
+          required
         />
+        {% if form.email.errors %}
+        <span class="text-danger"> {{form.email.errors}} </span>
+        {% endif %}
       </div>
       <button type="submit" name="btc_submit" class="btn btn-primary">
         Complete transaction
       </button>
     </form>
   </div>
-
+</div>
+<div class="card">
   <div class="card-body" style="overflow-x: auto">
     <h1>Transfers</h1>
     <table class="table table-borderless">
@@ -56,25 +73,25 @@
         <tr>
           <th scope="col">Email</th>
           <th scope="col">Amount</th>
-          <th scope="col">Coin Address</th>
-          <th scope="col">Transaction Hash</th>
-          <th scope="col">Status</th>
+          <th scope="col">Transaction Type</th>
           <th scope="col">Date</th>
         </tr>
       </thead>
       <tbody>
-        {% for deposit in deposits %}
+        {% for transfer in transfers %}
         <tr>
-          <td>{{request.user.email}}</td>
-          <td>{{deposit.amount}}</td>
-          <td>{{deposit.wallet_address}}</td>
-          <td>{{deposit.transaction_hash}}</td>
-          <td>{{deposit.get_status_display}}</td>
-          <td>{{deposit.date}}</td>
+          <td>{{user.email}}</td>
+          <td>${{transfer.amount}}</td>
+          <td>{{transfer.get_transfer_type_display}}</td>
+          <td>{{transfer.date}}</td>
         </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
 </div>
+
+{% endblock %}
+{% block extrascript %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 {% endblock %}

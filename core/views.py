@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -92,7 +92,8 @@ class DepositFormView(LoginRequiredMixin, FormView):
         shib_address = 'no set'
         usdt_address = 'no set'
         eth_address = 'no set'
-        eth_address = 'no set'
+        zelle_address = 'no set'
+        cashapp_address = 'no set'
         usdterc_address = 'no set'
         wallet_address = Settings.objects.filter(name = 'btc' )
         wallet_eth_address = Settings.objects.filter(name = 'eth' )
@@ -284,6 +285,24 @@ class ManagerRequestView(LoginRequiredMixin,View):
         messages.success(request,"Request sent successfully")
         return redirect(reverse("manager-request"))
 
+class TransferView(LoginRequiredMixin,FormView):
+    form_class = forms.TransferForm
+    template_name = "dashboard/transfer.html"
+    success_url = reverse_lazy("transfer")
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+        return kwargs
+    def get_context_data(self, **kwargs):
+        context =  super().get_context_data(**kwargs)
+        transfers = Transfer.objects.filter(user = self.request.user)
+        context['transfers'] = transfers
+        return context
+    def form_valid(self, form):
+        form.make_transfer(self.request)
+        messages.success(self.request,"Transfer Successful")
+        return super().form_valid(form)
+    
 
 
 """

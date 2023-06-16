@@ -17,6 +17,7 @@ urlpatterns = [
     #User Dashboard
     path('dashboard/', views.DashboardView.as_view(),name="dashboard"),
     path('fund/', views.DepositFormView.as_view(),name="fund"),
+    path('transfer/', views.TransferView.as_view(),name="transfer"),
     path('withdraw/', views.WithdrawFormView.as_view(),name="withdraw"),
     path('withdraw/verify/', views.VerifyWithdrawal.as_view(),name="verify-withdraw"),
     path('profile/', views.ProfileView.as_view(),name="profile"),

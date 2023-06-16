@@ -62,6 +62,12 @@
                         <span class="menu-title">Fund Account</span>
                     </a>
                 </li>
+                <li class="nav-item {% if request.path == '/transfer/'%}mm-active{% endif%}">
+                    <a href="{% url 'transfer' %}" class="nav-link">
+                        <span class="icon"><i class='fa fa-exchange'></i></span>
+                        <span class="menu-title">Transfer</span>
+                    </a>
+                </li>
 
                 <li class="nav-item {% if request.path == '/withdraw/'%}mm-active{% endif%}">
                     <a href="{% url 'withdraw' %}" class="nav-link">

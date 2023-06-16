@@ -93,3 +93,39 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = models.User
         fields = ["full_name","email","phonenumber","country","username"]
+
+class TransferForm(forms.Form):
+    amount = forms.IntegerField()
+    email = forms.EmailField()
+    def __init__(self,request,*args,**kwargs):
+        super().__init__(*args,**kwargs)
+        self.request = request
+    def clean(self):
+        amount = self.cleaned_data.get("amount")
+        email = self.cleaned_data.get("email")
+        if amount < 10:
+            self.add_error("amount","Minumum Transferrable Amount is 10 dollars")
+        if not models.User.objects.filter(email = email).exists():
+            self.add_error("email","Account does not exist")
+        if self.request.user.email == email:
+            self.add_error("email","Account should not be your own")
+        if self.request.user.account.profit_balance < amount:
+            self.add_error("email","Amount specified is greater than balance")
+        return self.cleaned_data
+    def make_transfer(self,request):
+        amount = self.cleaned_data.get("amount")
+        email = self.cleaned_data.get("email")
+        user = models.User.objects.get(email = email)
+        models.Transfer.objects.create(user = request.user, transfer_type = 'd',amount = amount )
+        models.Transfer.objects.create(user = user, transfer_type = 'c',amount = amount )
+        useraccount = models.Account.objects.get(user = user)
+        useraccount.invested_balance += amount
+        useraccount.save()
+        senderaccount = models.Account.objects.get(user = request.user)
+        if senderaccount.profit > amount:
+            senderaccount.profit -= amount
+        else:
+            senderaccount.invested_balance -= (amount - senderaccount.profit)
+            senderaccount.profit = 0 
+        senderaccount.save()
+        
