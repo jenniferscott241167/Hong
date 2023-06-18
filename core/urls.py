@@ -14,6 +14,8 @@ urlpatterns = [
     path('login/verify/',views.VerifyLoginView.as_view(),name="verify-login"),
     path('login/resend-login-token/',views.ResendVerificationMailView.as_view(),name="resend-login-email"),
     path('register/', views.RegisterView.as_view(),name="register"),
+    path("forgot-password/",views.UserPasswordResetView.as_view(),name="password-reset"),
+    path("reset-password/<uidb64>/<token>/",views.UserPasswordResetConfirmView.as_view(),name="password_reset_confirm"),
     #User Dashboard
     path('dashboard/', views.DashboardView.as_view(),name="dashboard"),
     path('fund/', views.DepositFormView.as_view(),name="fund"),

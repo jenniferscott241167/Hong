@@ -128,4 +128,5 @@ class TransferForm(forms.Form):
             senderaccount.invested_balance -= (amount - senderaccount.profit)
             senderaccount.profit = 0 
         senderaccount.save()
+        return useraccount
         

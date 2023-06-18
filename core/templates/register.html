@@ -86,7 +86,7 @@
                                     <span class="error-text">{{form.email.errors|default:""}}</span>
                                 </div>
                                 <div class="form-group">
-                                    <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm form-control" id="phone_no" placeholder="Your Phone Number" type="text" name="phonenumber" value="{{form.phonenumber.value|default:''}}" required="required" autofocus="autofocus" autocomplete="phone_no">
+                                    <input  class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm form-control" id="phone_no" placeholder="Your Phone Number" type="text" name="phonenumber" minlength="11" maxlength="11" value="{{form.phonenumber.value|default:''}}" required="required" autofocus="autofocus" autocomplete="phone_no">
                                     <span class="error-text">{{form.phonenumber.errors|default:""}}</span>
                                 </div>
                                 <div class="form-group">

@@ -99,7 +99,7 @@ class Withdraw(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     amount = models.DecimalField(decimal_places=2, max_digits=10)
     account_detail = models.TextField(max_length= 1000)
-    withdraw_type = models.CharField(max_length = 20, choices = (("btc","Bitcoin"),("bank","Bank Transfer")))
+    withdraw_type = models.CharField(max_length = 20, choices = (("btc","Bitcoin"),("eth","Ethereum"),("usdt-trc","USDT(TRC20)"),("usdt-erc","USDT(ERC20)"),("bank","Bank Transfer")))
     status = models.CharField(max_length=5, choices=(("p",'pending'),('s','success'),('f','failed')), default='p')
     date = models.DateTimeField(auto_now_add=True)
     date_approved = models.DateTimeField(blank=True,null = True)
@@ -118,6 +118,7 @@ class AccountManager(models.Model):
 
 class ManagerRequests(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length = 200)
     status = models.CharField(max_length=10, choices=(("approved","Approved"),("declined","Declined"),("pending","Pending")), default="pending")
     description = models.CharField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)

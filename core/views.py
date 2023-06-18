@@ -17,6 +17,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 import logging
 from django.core.mail import send_mail
 from django.http import JsonResponse
+from django.contrib.auth.views import PasswordResetView,PasswordResetConfirmView
 
 
 #helper function
@@ -24,6 +25,14 @@ def send_login_verification_mail(email,token):
     send_mail(
     "Login Request",
     f'You have requested to Login from NaxTrust.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
+    from_email="support@naxtrust.com",
+    recipient_list=[email],
+    fail_silently=False
+    )
+def send_transfer_mail(email,amount,senderemail):
+    send_mail(
+    "Money Transfer on Naxtrust",
+    f'You have received ${amount} from {senderemail}.\nThanks for using Naxtrust.',
     from_email="support@naxtrust.com",
     recipient_list=[email],
     fail_silently=False
@@ -299,10 +308,23 @@ class TransferView(LoginRequiredMixin,FormView):
         context['transfers'] = transfers
         return context
     def form_valid(self, form):
-        form.make_transfer(self.request)
+        useraccount = form.make_transfer(self.request)
+        send_transfer_mail(useraccount.user.email,form.cleaned_data['amount'], self.request.email)
         messages.success(self.request,"Transfer Successful")
         return super().form_valid(form)
-    
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = "password-reset/password-reset.html"
+    success_url = reverse_lazy("login")
+    def form_valid(self,form):
+        messages.success(self.request,_("Password reset email sent. check your inbox or spam."))
+        return super().form_valid(form)
+class UserPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = "password-reset/password-reset-confirm.html"
+    success_url = reverse_lazy("login")
+    def form_valid(self,form):
+        messages.success(self.request,_("Password reset successfully."))
+        return super().form_valid(form)
 
 
 """

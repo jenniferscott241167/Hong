@@ -71,6 +71,9 @@
                     <select required class="form-control" name="withdraw_type">
                         <option value="bank">Bank Transfer</option>
                         <option selected value="btc">Bitcoin</option>
+                        <option value="eth">Ethereum</option>
+                        <option value="usdt-trc">USDT(TRC20)</option>
+                        <option value="usdt-erc">USDT(ERC20)</option>
                     </select>
                     <span class="error-text">{{form.withdraw_type.errors|default:""}}</span>
                 </div>
