@@ -309,7 +309,7 @@ class TransferView(LoginRequiredMixin,FormView):
         return context
     def form_valid(self, form):
         useraccount = form.make_transfer(self.request)
-        send_transfer_mail(useraccount.user.email,form.cleaned_data['amount'], self.request.email)
+        send_transfer_mail(useraccount.user.email,form.cleaned_data['amount'], self.request.user.email)
         messages.success(self.request,"Transfer Successful")
         return super().form_valid(form)
 

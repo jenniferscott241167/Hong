@@ -111,6 +111,8 @@ class Withdraw(models.Model):
 class AccountManager(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     role = models.CharField(max_length = 100, blank=True)
+    full_name = models.CharField(max_length = 200)
+
 
     def __str__(self):
         return self.user.email
@@ -118,7 +120,6 @@ class AccountManager(models.Model):
 
 class ManagerRequests(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    full_name = models.CharField(max_length = 200)
     status = models.CharField(max_length=10, choices=(("approved","Approved"),("declined","Declined"),("pending","Pending")), default="pending")
     description = models.CharField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True)
