@@ -110,7 +110,7 @@ class Withdraw(models.Model):
 
 class AccountManager(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE)
-    role = models.CharField(max_length = 100, blank=True)
+    role = models.TextField(max_length = 3000, blank=True)
     full_name = models.CharField(max_length = 200)
 
 
