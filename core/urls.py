@@ -4,10 +4,10 @@ from django.views.generic import TemplateView
 from . import views
 from . import forms
 urlpatterns = [
-    path('',TemplateView.as_view(template_name = "index.html"), name="index"),
+    path('',views.IndexView.as_view(), name="index"),
     path('about-us/',TemplateView.as_view(template_name = "about.html"), name="about-us" ),
     path('services/',TemplateView.as_view(template_name = "services.html"), name="services"),
-    path('pricing/',TemplateView.as_view(template_name = "pricing.html"), name="pricing"),
+    path('pricing/',views.PricingView.as_view(), name="pricing"),
     path('faq/',TemplateView.as_view(template_name = "faq.html"), name="faq"),
     path('contact/',views.ContactView.as_view(), name="contact"),
     path('login/',views.LoginView.as_view(),name="login"),

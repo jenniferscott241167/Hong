@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer, Plan
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -49,6 +49,16 @@ def generate_token():
     verification_token = random.randint(100000,999999)
     return verification_token
 
+
+class IndexView(View):
+    def get(self,request):
+        plans = Plan.objects.all()
+        return render(request,"index.html",{'plans':plans})
+
+class PricingView(View):
+    def get(self,request):
+        plans = Plan.objects.all()
+        return render(request,"index.html",{'plans':plans})
 
 # Create your views here.
 class ContactView(FormView):

@@ -155,3 +155,13 @@ class Transfer(models.Model):
     def __str__(self):
         return str(self.user.email)
     
+class Plan(models.Model):
+    name = models.CharField(max_length=30)
+    interest = models.IntegerField()
+    period = models.IntegerField()
+    amount = models.IntegerField()
+    leverage = models.DecimalField(decimal_places=2, max_digits=3, default=Decimal("0.00"))
+    commission = models.IntegerField()
+
+    def __str__(self):
+        return  self.name
