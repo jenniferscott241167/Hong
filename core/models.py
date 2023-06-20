@@ -160,7 +160,7 @@ class Plan(models.Model):
     interest = models.IntegerField()
     period = models.IntegerField()
     amount = models.IntegerField()
-    leverage = models.DecimalField(decimal_places=2, max_digits=3, default=Decimal("0.00"))
+    leverage = models.DecimalField(decimal_places=4, max_digits=6, default=Decimal("0.0000"))
     commission = models.IntegerField()
 
     def __str__(self):
