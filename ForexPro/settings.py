@@ -138,7 +138,7 @@ AUTH_USER_MODEL = "core.User"
 
 LOGIN_REDIRECT_URL = '/dashboard/'
 LOGIN_URL = '/login/'
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 LOGGING = {
     'version': 1,
@@ -159,3 +159,7 @@ EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_PASSWORD = "225411"
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

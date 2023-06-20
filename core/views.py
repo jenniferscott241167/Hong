@@ -18,6 +18,7 @@ import logging
 from django.core.mail import send_mail
 from django.http import JsonResponse
 from django.contrib.auth.views import PasswordResetView,PasswordResetConfirmView
+from django.utils.translation import gettext_lazy as _
 
 
 #helper function
