@@ -74,9 +74,9 @@ logger = logging.getLogger(__name__)
 class RegisterView(FormView):
     template_name = 'register.html'
     form_class = forms.UserCreationForm
-    success_url = '/dashboard/'
+    success_url = '/login/'
     def get_success_url(self):
-        redirect_to = self.request.GET.get('next','/dashboard/')
+        redirect_to = self.request.GET.get('next','/login/')
         return redirect_to
     def form_valid(self,form):
         response = super().form_valid(form)
@@ -84,9 +84,9 @@ class RegisterView(FormView):
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password1')
         logger.info('New SignUp for %s through SignUpView'%email)
-        user = authenticate(email = email, password = password)
+        # user = authenticate(email = email, password = password)
         form.send_mail()
-        login(self.request,user)
+        # login(self.request,user)
         messages.info(self.request,'You signed up Successfully')
         return response
 
