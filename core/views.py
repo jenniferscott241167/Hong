@@ -8,7 +8,7 @@ from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer, Plan
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer, Plan, Referral
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -53,12 +53,19 @@ def generate_token():
 class IndexView(View):
     def get(self,request):
         plans = Plan.objects.all()
+        ref = request.GET.get('ref')
+        if ref:
+            user = User.objects.filter(username = ref)
+            if user.exists():
+                if 'ref' not in request.session:
+                    request.session['ref'] = ref
+                    messages.success(self.request,f"You have been referred by {ref}. Welcome to Naxtrust.")
         return render(request,"index.html",{'plans':plans})
 
 class PricingView(View):
     def get(self,request):
         plans = Plan.objects.all()
-        return render(request,"index.html",{'plans':plans})
+        return render(request,"plans.html",{'plans':plans})
 
 # Create your views here.
 class ContactView(FormView):
@@ -80,7 +87,10 @@ class RegisterView(FormView):
         return redirect_to
     def form_valid(self,form):
         response = super().form_valid(form)
-        form.save()
+        obj = form.save()
+        if self.request.POST.get("usertype") == "expert-trader":
+            obj.is_trader = True
+            obj.save()
         email = form.cleaned_data.get('email')
         password = form.cleaned_data.get('password1')
         logger.info('New SignUp for %s through SignUpView'%email)
@@ -323,6 +333,19 @@ class TransferView(LoginRequiredMixin,FormView):
         send_transfer_mail(useraccount.user.email,form.cleaned_data['amount'], self.request.user.email)
         messages.success(self.request,"Transfer Successful")
         return super().form_valid(form)
+
+class ReferralView(LoginRequiredMixin, View):
+    def get(self,request):
+        referral_link = request.build_absolute_uri(reverse("index")) + f"?ref={request.user.username}"
+        referrals = Referral.objects.filter(referrer = request.user).count()
+        active_referrals = Referral.objects.filter(referrer = request.user).select_related("referree").filter(referree__account__active = True).count()
+        context = {
+            'code':referral_link,
+            'referrals':referrals,
+            'active_referrals': active_referrals,
+            'commission': request.user.account.all_referral_bonus(),
+        }
+        return render(request,"dashboard/referral.html",context)
 
 class UserPasswordResetView(PasswordResetView):
     template_name = "password-reset/password-reset.html"

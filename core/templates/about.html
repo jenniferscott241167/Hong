@@ -1,212 +1,171 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}About us{% endblock %}
 {% block content %}
-<section class="banner-area">
-            <div class="banner-overlay">
-                <div class="banner-text text-center">
-                    <div class="container">
-                        <!-- Section Title Starts -->
-                        <div class="row text-center">
-                            <div class="col-xs-12">
-                                <!-- Title Starts -->
-                                <h2 class="title-head">About <span>Us</span></h2>
-                                <!-- Title Ends -->
-                                <hr>
-                                <!-- Breadcrumb Starts -->
-                                <ul class="breadcrumb">
-                                    <li><a href="{% url 'index' %}"> home</a></li>
-                                    <li>About</li>
-                                </ul>
-                                <!-- Breadcrumb Ends -->
-                            </div>
-                        </div>
-                        <!-- Section Title Ends -->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Banner Area Starts -->
-        <!-- About Section Starts -->
-        <section class="about-page">
-            <div class="container">
-                <!-- Section Content Starts -->
-                <div class="row about-content">
-                    <!-- Image Starts -->
-                    <div class="col-sm-12 col-md-5 col-lg-6 text-center">
-                        <img id="about-us" class="img-responsive img-about-us" src="{% static 'asset/images/about-us.png' %}" alt="about us">
-                    </div>
-                    <!-- Image Ends -->
-                    <!-- Content Starts -->
-                    <div class="col-sm-12 col-md-7 col-lg-6">
-                        <div class="feature-about">
-                            <h3 class="title-about">WE ARE Naxtrust Expert Traders: THE LEADERS OF PROFIT MAKERS IN TRADING</h3>
-                            <p>Since April 2013, Naxtrust Expert Traders has set out to promote the evolution of online financial trading in over 50 countries from here in the U.S.A. We aimed when we began to revolutionise the industry by offering investors better service, lower spreads and faster investment execution, something we are still absolutely committed to doing today.
-Our vision is to become the worldʼs largest provider of online funds management services. We follow very strict guidelines with regards to our clients’ funds, ensuring they are kept in reputable Tier 1 banks and at all times segregated from the company’s own funds. Additionally we appreciate the importance of keeping all our clients’ personal information strictly confidential and have implemented strict website security and information safekeeping procedures. We aim to take traders to the highest levels of proficiency:
-<br>
-• By offering our investors an avenue to wealth through our trading methods, proceeds and strategies.<br>
-• By making information of account and trading progress available on site for investors to make informed decisions.<br>
-• By providing a platform that opens secure access to a broad range of currencies, crypto currencies, metals and assets.<br>
-<br>
-The reputation of the MT4 trading platform precedes itself, being one of the highest acclaimed platforms in the industry today. The vast range of instruments available through Naxtrust Expert Traders allows traders the ability to invest in a wide range of crypto currencies across global markets.
-This state-of-the-art trading platform, provided to suit all of our client’s needs, is accessible through the most convenient means – through the web, via a desktop, tablet and mobile.
-Investors on Naxtrust Expert Traders can expect a number of added value services that we have developed to answer the needs of every trader from beginner to pro:<br>
-• Trading Services and Analysis<br>
-• Customer Service <br>
-• Educational Resources</p></div>
-                        <a class="btn btn-primary btn-services" href="{% url 'services' %}">Our services</a>
-                    </div>
-                    <!-- Content Ends -->
-
-                </div>
-                <!-- Section Content Ends -->
-            </div><!--/ Content row end -->
-        </section>
-        <!-- About Section Ends -->
-        <!-- Facts Section Starts -->
-        <section class="facts">
-            <!-- Container Starts -->
-            <div class="container">
-                <!-- Fact Badges Starts -->
-                <div class="row text-center facts-content">
-                    <div class="text-center heading-facts">
-                        <h2>Naxtrust Expert Traders<span> numbers</span></h2>
-                        <p>leading cryptocurrency exchange since day one of Bitcoin distribution</p>
-                    </div>
-                    <!-- Fact Badge Item Starts -->
-                    <div class="col-xs-12 col-md-3 col-sm-6 fact">
-                        <h3>$190.45M</h3>
-                        <h4>market cap</h4>
-                    </div>
-                    <!-- Fact Badge Item Ends -->
-                    <!-- Fact Badge Item Starts -->
-                    <div class="col-xs-12 col-md-3 col-sm-6 fact fact-clear">
-                        <h3>100k</h3>
-                        <h4>daily transactions</h4>
-                    </div>
-                    <!-- Fact Badge Item Ends -->
-                    <!-- Fact Badge Item Starts -->
-                    <div class="col-xs-12 col-md-3 col-sm-6 fact">
-                        <h3>122k</h3>
-                        <h4>active accounts</h4>
-                    </div>
-                    <!-- Fact Badge Item Ends -->
-                    <!-- Fact Badge Item Starts -->
-                    <div class="col-xs-12 col-md-3 col-sm-6">
-                        <h3>3</h3>
-                        <h4>years on the market</h4>
-                    </div>
-                    <!-- Fact Badge Item Ends -->
-                    <div class="col-xs-12 buttons">
-                        <a href="{% url 'register' %}" class="btn btn-primary btn-register">Register Now</a>
-                    </div>
-                </div>
-                <!-- Fact Badges Ends -->
-            </div>
-            <!-- Container Ends -->
-        </section>
-        <!-- facts Section Ends -->
-              <!-- Team Section Starts -->
-      <!-- <section class="team">
+ <!-- breadcrumb-area start -->
+    <div class="breadcrumb-area">
         <div class="container">
-          Section Title Starts
-          <div class="row text-center">
-            <h2 class="title-head">our <span>experts</span></h2>
-            <div class="title-head-subtitle">
-              <p> A talented team of financial and economic experts</p>
-            </div>
-          </div>
-          Section Title Ends -->
-          <!-- Team Members Starts
-          <div class="row team-content team-members">
-            Team Member Starts
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-              <div class="team-member">
-                Team Member Picture Starts
-                <img src="{% static 'asset/images/team/photo 2.jpg' %}" class="img-responsive" alt="team member">
-                Team Member Picture Ends -->
-                <!-- Team Member Details Starts
-                <div class="team-member-caption social-icons">
-                  <h4>Kimberly Buckner</h4>
-                  <p>Director</p>
-                </div>
-                Team Member Details Ends
-              </div>
-            </div>
-            Team Member Ends -->
-            <!-- Team Member Starts
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-              <div class="team-member">
-                Team Member Picture Starts
-                <img src="{% static 'asset/images/team/photo 1.jpeg' %}" class="img-responsive" alt="team member">
-                Team Member Picture Ends -->
-                <!-- Team Member Details Starts
-                <div class="team-member-caption social-icons">
-                  <h4>Boris Schlossberg</h4>
-                  <p>Co-Founder</p>
-                </div>
-                Team Member Details Ends
-              </div>
-            </div>
-            Team Member Ends -->
-            <!-- Team Member Starts
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-              Team Member
-              <div class="team-member">
-                Team Member Picture Starts
-                <img src="{% static 'asset/images/team/photo 3.jpeg' %}" class="img-responsive" alt="team member">
-                Team Member Picture Ends -->
-                <!-- Team Member Details Starts
-                <div class="team-member-caption social-icons">
-                  <h4>Betty Scott</h4>
-                  <p>Bitcoin Consultant</p>
-                </div>
-                Team Member Details Ends
-              </div>
-            </div>
-            Team Member Ends -->
-            <!-- Team Member Starts
-            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-              <div class="team-member">
-                Team Member Picture Starts
-                <img src="{% static 'asset/images/team/photo 4.jpeg' %}" class="img-responsive" alt="team member">
-                Team Member Picture Ends -->
-                <!-- Team Member Details Starts
-                <div class="team-member-caption social-icons">
-                  <h4>Grace jackson</h4>
-                  <p>Senior Account Manager</p>
-                </div>
-                Team Member Details Ends
-              </div>
-            </div>
-            Team Member Ends
-          </div>
-          Team Members Ends
-        </div>
-      </section> -->
-
-
-        <!-- Call To Action Section Starts -->
-      <section class="call-action-all">
-        <div class="call-action-all-overlay">
-          <div class="container">
             <div class="row">
-              <div class="col-xs-12">
-                <!-- Call To Action Text Starts -->
-                <div class="action-text">
-                  <h2>Join Other Registered Users</h2>
-                  <p class="lead">Open account today and start trading!</p>
+                <div class="col-12">
+                    <div class="breadcrumb_box text-center">
+
+                        <h1 class="breadcrumb-title text-color-primary">ABOUT US</h1>
+                        <!-- breadcrumb-list start -->
+                        <ul class="breadcrumb-list">
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+                            <li class="breadcrumb-item active">About Us</li>
+                        </ul>
+                        <!-- breadcrumb-list end -->
+                    </div>
                 </div>
-                <!-- Call To Action Text Ends -->
-                <!-- Call To Action Button Starts -->
-                <p class="action-btn">
-
-                    <a  href="{% url 'register' %}" class="btn btn-primary">Register Now</a>
-
-                <!-- Call To Action Button Ends -->
-              </div>
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+    <!-- breadcrumb-area end -->
+
+
+
+
+    <div class="site-wrapper-reveal">
+        <div class="timeline-area section-space--ptb_120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ht-timeline style-01">
+                            <ul class="tm-timeline-list ht-animation-queue">
+                                <li class="line"></li>
+                                <li class="item animate">
+                                    <div class="dots">
+                                        <div class="middle-dot"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 timeline-col left timeline-feature">
+                                            <div class="inner">
+                                                <div class="date-wrap">
+                                                    <h4 class="year" style="font-size:20px;">{{sitename}}</h4>
+                                                </div>
+
+                                                <div class="photo">
+                                                    <img src="{% static 'images2/cert.png' %}" alt="timeline-image-01" class="img-fluid">
+                                                </div>
+                                            
+                                               <!--<a href="https://find-and-update.company-information.service.gov.uk/company/10825810" target="_blank" class="btn btn--secondary btn-one"><span class="btn-icon mr-2"><i class="far fa-user"></i></span> Verify company</a>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 timeline-col right timeline-info">
+                                            <div class="inner">
+                                                <div class="content-wrap">
+                                                    <div class="content-body">
+                                                        <h6 class="heading">LEARN MORE</h6>
+
+                                                        <div class="text">
+                                                            {{sitename}} is an absolutely unique and high-tech company, covering several most profitable and relevant business lines of various profitability at once. The main activity of the company is the development and operation of high-tech software and
+                                                            equipment used in various fields of medium- and high-profitable business operating through the Internet world network. The company has a wide range of unique financial offers for clients. These
+                                                            offers won't allow to stay indifferent even the most demanding specialists in the field of investment and network business development.</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item animate">
+                                    <div class="dots">
+                                        <div class="middle-dot"></div>
+                                    </div>
+
+                                    <div class="row">
+                                       <!-- <div class="col-md-6 timeline-col left timeline-feature">
+                                            <div class="inner">
+
+
+                                                <div class="photo">
+                                                    <img src="assets2/images/timeline/timeline-image-02.jpg" alt="timeline-image-01" class="img-fluid">
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-md-6 timeline-col right timeline-info">
+                                            <div class="inner">
+                                                <div class="content-wrap">
+                                                    <div class="content-body">
+                                                        <h6 class="heading">TEAMMATES PASSION AND DEDICATION</h6>
+
+                                                        <div class="text">
+                                                            We are grateful to have such a dedicated and passionate teammates, we believe that it's crucial to maintain long and smooth flow under variant conditions. Specially more so in a technology influential industry, (such as: 'Fintech'), in our view dedication
+                                                            is the binding ingredient required to formulate a great success.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="item animate">
+                                    <div class="dots">
+                                        <div class="middle-dot"></div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-6 timeline-col left timeline-feature">
+                                            <div class="inner">
+
+
+                                              <!--  <div class="photo">
+                                                    <img src="assets2/images/timeline/blog-07-500x350.jpg" alt="timeline-image-01" class="img-fluid" width="350px">
+                                                </div>-->
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 timeline-col right timeline-info">
+                                            <div class="inner">
+                                                <div class="content-wrap">
+                                                    <div class="content-body">
+                                                        <h6 class="heading">OUR GOAL</h6>
+
+                                                        <div class="text">
+                                                            {{sitename}} was built with the mission of making investing a more simple endeavour for everyone, not only expert investors. Democratization is a noun that represents this new century in a very strong sense. With technology becoming more accessible
+                                                            to more people, the solutions they bring are expanding into new markets as well. We utilize this new ubiquity of technology to bring cutting edge investing solutions and planning right to your
+                                                            screens.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--========== Call to Action Area Start ============-->
+        <div class="cta-image-area_one section-space--ptb_80 cta-bg-image_one">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="cta-content md-text-center">
+                            <h3 class="heading text-white">Assess your business potentials and find opportunities <span class="text-color-secondary">for bigger success</span></h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="cta-button-group--one text-center">
+                            <a href="mailto:{{supportemail}}" class="btn btn--white btn-one"><span class="btn-icon mr-2"><i class="far fa-comment-alt-dots"></i></span> Let's talk</a>
+                            <a href="mailto:{{supportemail}}" class="btn btn--secondary  btn-two"><span class="btn-icon mr-2"><i class="far fa-info-circle"></i></span> Get info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--========== Call to Action Area End ============-->
+
+
+
+
+
+
+
+
+    </div>
+
 {% endblock %}

@@ -1,5 +1,5 @@
 from decimal import Decimal
-from inspect import trace
+
 import random
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
@@ -61,6 +61,7 @@ class User(AbstractUser):
     country = models.CharField(
         max_length= 50
     )
+    is_trader = models.BooleanField(default=True)
     objects = BaseManager()
 
     USERNAME_FIELD = 'email'
@@ -79,7 +80,13 @@ class Account(models.Model):
     level = models.CharField(max_length = 15, choices = (("starter","Starter"),
     ("silver","Silver"),("gold","Gold"),("platinium","Platinium"),
     ("diamond","Diamond"),("corporate","Corprate")),default = "starter")
+    active = models.BooleanField(default=True)
     status = models.BooleanField(default = True)
+
+    
+    def all_referral_bonus(self):
+        referrals = self.user.referrer.all()
+        return sum([referral.bonus for referral in referrals])
 
     def __str__(self):
         return str(self.user.email)
@@ -165,3 +172,12 @@ class Plan(models.Model):
 
     def __str__(self):
         return  self.name
+    
+class Referral(models.Model):
+    referrer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="referrer")
+    referree = models.ForeignKey(User, on_delete=models.CASCADE, related_name="referree")
+    bonus = models.DecimalField(default=Decimal("0.00"), max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return self.referrer.email
+    

@@ -7,6 +7,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logoIcon/favicon.ico' %}" type="image/x-icon">
     
     <link rel="stylesheet" href="{% static 'asset/css/font-awesome.min.css' %}">
     <!-- Vendors Min CSS -->
@@ -50,7 +52,7 @@
 
                 <li class="nav-item {% if request.path == '/dashboard/'%}mm-active{% endif%}">
                     <a href="{% url 'dashboard' %}" class="nav-link">
-                        <span class="icon"><i class='fa fa-tachometer'></i></span>
+                        <span class="icon"><i class='fa fa-university'></i></span>
                         <span class="menu-title">Dashboard</span>
                     </a>
                 </li>
@@ -75,7 +77,13 @@
                         <span class="menu-title">Withdraw</span>
                     </a>
                 </li>
-                
+
+                <li class="nav-item {% if request.path == '/profile/referral/'%}mm-active{% endif%}">
+                    <a href="{% url 'dashboard-referral' %}" class="nav-link">
+                        <span class="icon"><i class='fa fa-users'></i></span>
+                        <span class="menu-title">Referral</span>
+                    </a>
+                </li>
                 <li class="nav-item {% if request.path == '/profile/'%}mm-active{% endif%}">
                     <a href="{% url 'profile' %}" class="nav-link">
                         <span class="icon"><i class='fa fa-user'></i></span>
@@ -85,7 +93,7 @@
                 <li class="nav-item-title">Support</li>
                 <li class="nav-item {% if request.path == '/account-manager/'%}mm-active{% endif%}">
                     <a href="{% url 'account-manager' %}" class="nav-link">
-                        <span class="icon"><i class='fa fa-user'></i></span>
+                        <span class="icon"><i class='fa fa-user-circle'></i></span>
                         <span class="menu-title">Account Manager / Expert Traders</span>
                     </a>
                 </li>

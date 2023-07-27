@@ -1,0 +1,330 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <title>Naxtrust Expert Traders - {% block title %}Home{% endblock %}</title>
+  
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'asset/images/favicon.ico' %}" type="image/x-icon">
+  <meta name="description" content="Naxtrust is one of the best private crypto investment organization, solely committed to the generation and awareness of wealth online via cryptocurrency.">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Naxtrust Traders">
+    <meta name="twitter:description" content="Naxtrust Expert Traders is one of the best private crypto investment organization, solely committed to the generation and awareness of wealth online via cryptocurrency. It provides vital strategic information and a variety of trade investment data. To give the best investment platform to our proliferate number of clients around the globe...">
+    
+    <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+    <meta name="og:title" content="Naxtrust Expert Traders">
+    <meta name="og:description" content="Naxtrust Expert Traders is one of the best private crypto investment organization, solely committed to the generation and awareness of wealth online via cryptocurrency. It provides vital strategic information and a variety of trade investment data. To give the best investment platform to our proliferate number of clients around the globe...">
+    <!-- <meta name="og:image" content="../blockchainjournal.news/wp-content/uploads/2019/08/how-to-choose-a-cryptocurrency.jpg"> -->
+    <meta name="og:url" content="/">
+    <meta name="og:site_name" content="Naxtrust Expert Traders">
+    <meta name="og:type" content="website">
+
+  <!-- Template CSS Files -->
+  <link rel="stylesheet" href="{% static 'asset/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/css/select2.min.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'asset/css/skins/orange.css' %}">
+
+
+  <!-- Template JS Files -->
+  <script src="{% static 'asset/js/modernizr.js' %}"></script>
+</head>
+
+<body>
+  <!-- SVG Preloader Starts -->
+  <div id="preloader">
+    <div id="preloader-content">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px" height="150px" viewBox="10 0 0 60 100" xml:space="preserve">
+        <filter id="dropshadow" height="130%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+          <feOffset dx="0" dy="0" result="offsetblur"/>
+          <feFlood flood-color="red"/>
+          <feComposite in2="offsetblur" operator="in"/>
+          <feMerge>
+            <feMergeNode/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <path class="path" fill="#000000" id="XMLID_1_" d="M5.7,122.9H199c5.7,0,10.3-4.6,10.3-10.3V15.8c0-9.2-11.2-13.8-17.6-7.2l-63,65
+        c-4.7,4.9-12.8,3.9-16.2-1.9L96.8,45.2c-3.4-5.8-11.5-6.8-16.2-1.9L5.7,122.8"/>
+      </svg>
+    </div>
+  </div>
+  <!-- SVG Preloader Ends -->
+  <!-- Wrapper Starts -->
+  <div class="wrapper">
+    <!-- Header Starts -->
+    
+    <header class="header">
+      <div id="google_translate_element"></div>
+
+      <div class="container">
+        
+        <div class="row">
+          <!-- Logo Starts -->
+          <div class="main-logo col-xs-12 col-md-3 col-md-2 col-lg-2 hidden-xs">
+            <a href="{% url 'index' %}">
+              <img id="logo" class="img-responsive" src="{% static 'asset/images/nax-logo2.png' %}" alt="logo">
+            </a>
+          </div>
+          <!-- Logo Ends -->
+          <!-- Statistics Starts -->
+          <div class="col-md-7 col-lg-7">
+              <div style="margin-top:25px !important; height:62px; background-color: #0A2647; overflow:hidden; box-sizing: border-box; border: 1px solid #0A2647; border-radius: 4px; text-align: right; line-height:14px; block-size:62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%;padding:1px;padding: 0px; margin: 0px; width: 100%;"><div style="height:40px; padding:0px; margin:0px; width: 100%;"><iframe src="https://widget.coinlib.io/widget?type=horizontal_v2&amp;theme=dark&amp;pref_coin_id=1505&amp;invert_hover=no" width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0" style="border:0;margin:0;padding:0;"></iframe></div></div>
+        </div>
+                             <!-- Statistics Ends -->
+                  <!-- User Sign In/Sign Up Starts -->
+                  <div class="col-md-3">
+                    <ul class="unstyled user">
+                      {% if request.user.is_authenticated %}
+                       <li class="sign-up">
+                        <a  href="{% url 'dashboard' %}" class="btn btn-primary"><i class="fa fa-tachometer"></i>Dashboard</a>
+                      </li>
+                      {% else %}
+                      <li class="sign-in">
+                        <a href="{% url 'login' %}" class="btn btn-primary"><i class="fa fa-user"></i> Log in</a>
+                      </li>
+                       <li class="sign-up">
+                        <a  href="{% url 'register' %}" class="btn btn-primary"><i class="fa fa-user-plus"></i> Sign Up</a>
+                      </li>
+                      {% endif %}
+                                                                 </ul>
+                  </div>
+                  <!-- User Sign In/Sign Up Ends -->
+                </div>
+              </div>
+              <!-- Navigation Menu Starts -->
+              <nav class="site-navigation navigation" id="site-navigation">
+                <div class="container">
+                  <div class="site-nav-inner">
+                    <!-- Logo For ONLY Mobile display Starts -->
+                    <a class="logo-mobile" href="{% url 'index' %}">
+                      <img id="logo-mobile" class="img-responsive" src="{% static 'asset/images/nax-logo2.png' %}" alt="">
+                    </a>
+                    <!-- Logo For ONLY Mobile display Ends -->
+                    <!-- Toggle Icon for Mobile Starts -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <!-- Toggle Icon for Mobile Ends -->
+                    <div class="collapse navbar-collapse navbar-responsive-collapse">
+                      <!-- Main Menu Starts -->
+                      <ul class="nav navbar-nav">
+                        <li class="{% if request.path == '/'%}active{% endif%}"><a href="{% url 'index' %}">Home</a></li>
+                        <li class="{% if request.path == '/about-us/'%}active{% endif%}"><a href="{% url 'about-us' %}">About Us</a></li>
+                        <li class="{% if request.path == '/services/'%}active{% endif%}"><a href="{% url 'services' %}">Services</a></li>
+                        <li class="{% if request.path == '/pricing/'%}active{% endif%}"><a href="{% url 'pricing' %}">Pricing</a></li>
+                        <li class="{% if request.path == '/contact/'%}active{% endif%}"><a href="{% url 'contact' %}">Contact</a></li>
+                        <!-- Search Icon Starts -->
+                        <li class="search"><button class="fa fa-search"></button></li>
+                        <!-- Search Icon Ends -->
+                      </ul>
+                      <!-- Main Menu Ends -->
+                    </div>
+                  </div>
+                </div>
+                <!-- Search Input Starts -->
+                <div class="site-search">
+                  <div class="container">
+                    <input type="text" placeholder="type your keyword and hit enter ...">
+                    <span class="close">×</span>
+                  </div>
+                </div>
+                <!-- Search Input Ends -->
+              </nav>
+              <!-- Navigation Menu Ends -->
+            </header>
+            <!-- Header Ends -->
+
+            <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "110489364992258");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v13.0'
+        });
+      };
+
+   
+    </script>
+    {% for message in messages %}
+    <div class="free-box flex-center">
+        <div class="alert alert-{{message.tags}} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <span>{{message}}</span>
+        </div>
+    </div>
+    {% endfor %}
+    {% block content %}
+    {% endblock content%}
+    </div>
+    <!-- Footer Starts -->
+    <footer class="footer">
+      <!-- Footer Top Area Starts -->
+      <div class="top-footer">
+        <div class="container">
+          <div class="row">
+            <!-- Footer Widget Starts -->
+            <div class="col-sm-4 col-md-2">
+              <div class="menu">
+                <ul>
+
+                        <li ><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'about-us' %}">About Us</a></li>
+                        <li><a href="{% url 'services' %}">Services</a></li>
+                        <li><a href="{% url 'pricing' %}">Pricing</a></li>
+                        <li><a href="{%url 'contact' %}">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Footer Widget Ends -->
+            <!-- Footer Widget Starts -->
+            <div class="col-sm-4 col-md-2">
+              <div class="menu">
+                <ul>
+                  <li><a href="{% url 'faq' %}">FAQ</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+                </ul>
+              </div>
+            </div>
+            <!-- Footer Widget Ends -->
+            <!-- Footer Widget Starts -->
+            <div class="col-sm-4 col-md-3">
+              <div class="contacts">
+                <div>
+                  <span>support@naxtrust.com</span>
+                </div>
+                <div>
+                  <span>+1(574)373-6695</span>
+                </div>
+                <div>
+                  <span>California U.S.A</span>
+                </div>
+              </div>
+     
+           
+    
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+
+              <p class="text-center">Copyright © 2013</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--Start of Tawk.to Script-->
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/62523b21b0d10b6f3e6c7f95/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script> -->
+<!--End of Tawk.to Script-->
+   <!--Start of Tawk.to Script-->
+<!-- <script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/61d3deea3d23fa26e870e31c/1fohpth79';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script> -->
+<!--End of Tawk.to Script-->
+
+
+<script type="text/javascript"
+      src=
+"https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit"></script>
+<script type="text/javascript">
+
+  function googleTranslateElementInit() {
+      new google.translate.TranslateElement(
+          {pageLanguage: 'en'},
+          'google_translate_element'
+      );
+  }
+</script>
+<script>
+  var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?69743';
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = url;
+  var options = {
+"enabled":true,
+"chatButtonSetting":{
+    "backgroundColor":"#4dc247",
+    "ctaText":"",
+    "borderRadius":"25",
+    "marginLeft":"0",
+    "marginBottom":"50",
+    "marginRight":"50",
+    "position":"left"
+},
+"brandSetting":{
+    "brandName":"Naxtrust Expert Traders",
+    "brandSubTitle":"answers asap",
+    "brandImg":"{% static 'asset/images/nax-logo.png' %}",
+    "welcomeText":"Hi there!\nHow can I help you?",
+    "messageText":"Hello, I have a question about ",
+    "backgroundColor":"#0a5f54",
+    "ctaText":"Start Chat",
+    "borderRadius":"25",
+    "autoShow":false,
+    "phoneNumber":"+447435415873"
+}
+};
+  s.onload = function() {
+      CreateWhatsappChatWidget(options);
+  };
+  var x = document.getElementsByTagName('script')[0];
+  x.parentNode.insertBefore(s, x);
+</script>
+    <!-- Footer Ends -->
+    <!-- Back To Top Starts  -->
+    <a href="#" id="back-to-top" class="back-to-top fa fa-arrow-up"></a>
+    <script src="{% static 'asset/js/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'asset/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'asset/js/select2.min.js' %}"></script>
+    <script src="{% static 'asset/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'asset/js/custom.js' %}"></script>
+  </body>
+</html>

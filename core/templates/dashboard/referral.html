@@ -1,0 +1,51 @@
+{% extends 'dashboard/base.html' %} 
+{% load static %}
+{% block content %}
+<!-- Main Content Layout -->
+<!-- Breadcrumb Area -->
+<div class="breadcrumb-area">
+  <h1>Referral</h1>
+  <ol class="breadcrumb">
+    <li class="item">
+      <a href="{% url 'dashboard' %}"><i class="fa fa-home"></i></a>
+    </li>
+    <li class="item">Dashboard</li>
+    <li class="item">Referral</li>
+  </ol>
+</div>
+<!-- End Breadcrumb Area -->
+
+<!-- Start -->
+<div class="card mb-30">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h3>
+      Referral
+    </h3>
+  </div>
+
+  <div class="card-body">
+    <table class="table table-striped mb-4">
+      <tr>
+        <td>Referrals</td><td>{{referrals}}</td>
+      </tr>
+      <tr>
+        <td>Active Referrals</td><td>{{active_referrals}}</td>
+      </tr>
+      <tr>
+        <td>Total Referrals Commission</td><td>${{commission}}</td>
+      </tr>
+    </table>
+    <div class="form-group">
+        <label for="">Referral Link</label>
+      <div class="input-group pe-2 ps-2">
+        <input type="text" id="referral" value="{{code}}" class="form-control" readonly>
+        <div class="input-group-append">
+          <span class="input-group-text" style="cursor: pointer;"><i class="fa fa-clipboard"></i></span>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+{% endblock %}
