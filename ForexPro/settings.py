@@ -79,18 +79,18 @@ WSGI_APPLICATION = 'ForexPro.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-    # 'default':{
-    #     'ENGINE':'django.db.backends.postgresql',
-    #     'NAME':'naxtrust',
-    #     'USER':'naxtrust_user',
-    #     'PASSWORD':'KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd',
-    #     'HOST':'postgres://naxtrust_user:KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd@dpg-chs6bb64dadfn60rsb7g-a,oregon-postgres.render.com',
-    #     'PORT':'5432',
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
     # }
+    'default':{
+        'ENGINE':'django.db.backends.postgresql',
+        'NAME':'naxtrust',
+        'USER':'naxtrust_user',
+        'PASSWORD':'KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd',
+        'HOST':'postgres://naxtrust_user:KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd@dpg-chs6bb64dadfn60rsb7g-a,oregon-postgres.render.com',
+        'PORT':'5432',
+    }
 }
 
 
