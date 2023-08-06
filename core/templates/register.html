@@ -55,13 +55,15 @@
 {% block content %}
 <div class="container">
     <form action="" method="post">
+
         {% csrf_token %}
         <div class="form-container">
             <h3 class="text-center">Register</h3>
+            {{ form.errors }}
             <div class="form-group">
                 <label for="">Full Name</label>
-                <input type="text" name="fullname" class="form-control" placeholder="Your Full Name" required>
-                <span class="error-text">{{form.fullname.errors|default:""}}</span>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="Your Full Name" required>
+                <span class="error-text">{{form.full_name.errors|default:""}}</span>
             </div>
           
             <div class="form-group">
@@ -81,7 +83,7 @@
               </div>
             <div class="form-group">
                 <label for="">Email</label>
-                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                <input type="email" name="email" class="form-control" value="{{form.email.value|default:''}}" placeholder="Your Email" required>
                 <span class="error-text">{{form.email.errors|default:""}}</span>
             </div>
             <div class="form-group">
