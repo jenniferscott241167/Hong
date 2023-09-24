@@ -85,10 +85,10 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'NAME':'naxtrust',
-        'USER':'naxtrust_user',
-        'PASSWORD':'KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd',
-        'HOST':'postgres://naxtrust_user:KVVxxIfKCuqxvjJBvyZ2U99vd1t3LEkd@dpg-chs6bb64dadfn60rsb7g-a,oregon-postgres.render.com',
+        'NAME':'datanax',
+        'USER':'datanax_user',
+        'PASSWORD':'3mwMWzat1YoCPQOboYe7uGMVR0TAMX18',
+        'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
 }
