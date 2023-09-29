@@ -191,17 +191,17 @@ class VerifyWithdrawal(LoginRequiredMixin,View):
 class LoginView(FormView):
     form_class = forms.AuthenticateForm
     template_name = "login.html"
-    success_url = reverse_lazy("dashboard")
+    success_url = reverse_lazy("verify-login")
 
     def form_valid(self, form):
         user = form.get_user()
-        # token = generate_token()
-        # send_login_verification_mail(user.email,token)
-        # self.request.session['login_token'] = token
-        # self.request.session['user'] = user.email
-        login(self.request,user)
-        # messages.success(self.request,"A verification token has been sent to your email address.")
-        messages.success(self.request,"Login Successful.")
+        token = generate_token()
+        send_login_verification_mail(user.email,token)
+        self.request.session['login_token'] = token
+        self.request.session['user'] = user.email
+        # login(self.request,user)
+        messages.success(self.request,"A verification token has been sent to your email address.")
+        # messages.success(self.request,"Login Successful.")
         
         return super().form_valid(form)
 
@@ -224,7 +224,7 @@ class VerifyLoginView(View):
             del request.session['login_token']
             return redirect(reverse("dashboard"))
         else:
-            # messages.error(request,"Invalid Token")
+            messages.error(request,"Invalid Token")
             return render(request,"verify-login.html",{"error":"Invalid Token"})
 
 class ResendVerificationMailView(View):
