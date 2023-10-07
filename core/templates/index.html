@@ -611,6 +611,7 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
                     <div class="col-lg-12">
                         <div class="section-title-wrapper text-center section-space--mb_40 wow move-up">
                             <h6 class="section-sub-title mb-20">Start Earning with a click</h6>
+			    <h6 class="section-sub-title mb-20">click on any of the broker below to link your naxtrust account and start Trading & investment</h6>
                             <h3 class="section-title">TRADING PLANS </h3>
                         </div>
                     </div>
@@ -647,20 +648,28 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
                                     <h6 class="period">Daily Interest Return</h>
                                     <h6 class="interest">Capital Will Return Back</h6>
                                     <h6 class="referral">10% Referral Bonus</h6>
-			            <h6 class="period">leverage in %</h>
+			            <h6 class="period">leverage{{plan.leverage}} %</h6>
                                 </div>
                             </div>
                             <div class="pricing-table__body">
                                 <ul class="pricing-table__list">
-                                    <li> possible Minimum tradable Amount: ${{plan.amount}} </li>
+                                    <li> Minimum tradable Amount: ${{plan.amount}} </li>
                                     
                                     <li>Quality &amp; Trading Experience</li>
                                     <li><span class="featured" style="color:green;"><i class='fas fa-info-circle' style="color:green;"></i> No Withdrawal Charges!</span></li>
-                                </ul>
+				    <li><span class="featured" style="color:green;"><i class='fas fa-info-circle' style="color:green;"></i> SUBSCRIBE and start trading⏬⬇️</span></li>
+				</ul>
+				</ul>
                             </div>
                             <div class="pricing-table__footer">
-                                <a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary">Get started</a>
-                            </div>
+                                <a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary"> ON NAXTRUST</a>
+				 <a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary"> ON BINANCE</a>
+				    
+                                 <a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary">ON METATRADER 5</a>
+				    
+				<a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary">ON TRADINGVIEW</a>
+				    <a href="{% url 'register' %}" class="ht-btn ht-btn-default btn--secondary">OTHER BROKER</a>
+				</div>    
                         </div>
                     </div>
                     {% endfor %}
@@ -713,7 +722,7 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
 
                             <div class="post-excerpt mt-15">
                                 <p>At {{sitename}} LLC, we provide a unique platform that offers a lucrative opportunity to exchange countries currency otherwise know as currency pairs in trading that generate daily passive income for both traders and investors (banks, companies, corporate bodies and individuals). Our platform allows investors & traders to enjoy the many benefits of investing and trading currencies across the globe, such as consistent cash flow, high returns, tax advantages, diversification, and a high level of trading leverage for wealth creation.
-					naxtrust expert traders are hired by some Bank to trade for them with under our watch and management. we also allow our experience and expertise to trade for individual (account management). our Investors (banks, corporate, companies and individuals) capital is kept saved and secured by our platform.</p>
+					naxtrust trading expertise are hired by some Bank to trade for them with under our watch and management. we also allow our experience and expertise to trade for individual (account management). our Investors (banks, corporate, companies and individuals) capital is kept saved and secured by our platform.</p>
                             </div>
                             <!-- <div class="btn-text">
                                 <a href="#">Read more <i class="ml-1 button-icon far fa-long-arrow-right"></i></a>
@@ -834,7 +843,7 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
                     <center>
                         <div class="modern-number-01 mr-5">
                             <h4 class="heading"><span class="mark-text" style="font-size:80px;">143k+</span></h4>
-                            <h3 class="heading">Active Investors</h3>
+                            <h3 class="heading">Active Investors and Traders</h3>
                         </div>
                         <br>
                         <br>
@@ -1050,7 +1059,7 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
                 <div class="col-lg-6 order-2 order-lg-1">
                     <div class="resources-left-box">
                         <div class="resources-inner">
-                            <h6 class="sub-title mb-20"><b>SECURE AND EASY</b></h6>
+                            <h6 class="sub-title mb-20"><b>100% LEGITIMACY AND TRANSPARENCY</b></h6>
                             <h5 class="heading"><span class="text-color-primary"> {{sitename}} Trading / Investment Company</span></h5>
                             <hr>
 
@@ -1104,7 +1113,7 @@ NAXTRUST trading brokerage support meta 4 or meta 5, Forex4you. Join us today an
                 <div class="col-lg-12">
                     <div class="section-title-wrap text-center section-space--mb_40">
                         <h6 class="section-sub-title mb-20">Testimonials</h6>
-                        <h3 class="heading">What Investors say about <span class="text-color-primary"> {{sitename}} ?</span></h3>
+                        <h3 class="heading">What Investors and Traders say about <span class="text-color-primary"> {{sitename}} ?</span></h3>
                     </div>
                     <div class="testimonial-slider">
                         <div class="swiper-container testimonial-slider__container">
