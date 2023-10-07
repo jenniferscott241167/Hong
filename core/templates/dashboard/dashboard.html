@@ -515,17 +515,22 @@
   </div>
 </div>
 
-  <div class="text-toolbar form-group">
-       <table>><thead>
-          <tr><input type="text">
-            <th scope="col">Currency type</th>
-            <th scope="col">Amount</th>
-            <th scope="col">Type</th>
-            <th scope="col">Status</th>
-            <th scope="col">Date</th>
-       </input></tr>
-       </thead></table></div>
-    <input type="text" id="text" name="usertype">
+  <div class="form-group">
+    <table><thead>
+          <tr>
+            <th scope="col"><label for="">currency pairs</label>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="currency pairs" required>Currency pairs</th>
+            <th scope="col"><label for="">amount to trade</label>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="amount to trade" required>Amount to trade</th>
+            <th scope="col"><label for="">liquidity</label>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="liquidity" required>liquidity</th>
+            <th scope="col"><label for="">status</label>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="status" required>Status</th>
+            <th scope="col"><label for="">date</label>
+                <input type="text" name="full_name" class="form-control" value="{{form.full_name.value|default:''}}" placeholder="time" required>Date</th>
+       </tr>
+       </thead></table>
+  </div>
   <div class="radio-toolbar form-group">
                 <input type="radio" id="radioTrader" name="usertype" value="expert-trader" >
                 <label for="radioTrader">trade now only for Trader</label>
