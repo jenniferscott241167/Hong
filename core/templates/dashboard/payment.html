@@ -27,7 +27,7 @@
             Your reward will be send to your provided bitcoin wallet or account number
           </li>
         </ul>
-        
+        {{form.errors}}
         <form method="POST">
           {% csrf_token %}
           <div class="form-group">
@@ -42,8 +42,8 @@
         
             <input
               type="hidden"
-              value="{{request.user.id}}"
-              name="user"
+              value="{{request.user.reward.id}}"
+              name="reward"
             />
          
           <div class="form-group">
@@ -115,7 +115,7 @@
             />
           </div>
           <button type="submit" name="btc_submit" class="btn btn-primary">
-            Complete transaction
+            Claim Reward
           </button>
         </form>
       </div>

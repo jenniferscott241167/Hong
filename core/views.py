@@ -60,7 +60,13 @@ class IndexView(View):
                 if 'ref' not in request.session:
                     request.session['ref'] = ref
                     messages.success(self.request,f"You have been referred by {ref}. Welcome to Naxtrust.")
-        return render(request,"index.html",{'plans':plans})
+
+        reward = Settings.objects.filter(name = "homereward")
+        if reward.exists():
+            reward = reward.first()
+        else:
+            reward = None 
+        return render(request,"index.html",{'plans':plans, 'reward':reward})
 
 class PricingView(View):
     def get(self,request):
@@ -357,11 +363,11 @@ class ReferralView(LoginRequiredMixin, View):
 class RewardDetailsFormView(LoginRequiredMixin, FormView):
     form_class = forms.RewardForm
     template_name = "dashboard/payment.html"
-    success_url = ""
+    success_url = reverse_lazy("reward-done")
 
     def form_valid(self,form):
         form.save()
-        return super().form_valid()
+        return super().form_valid(form)
 
 class RewardPaymentPageView(LoginRequiredMixin, View):
     def get(self,request):

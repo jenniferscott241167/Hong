@@ -78,33 +78,7 @@
   </div>
 
 
-  <div class="card-body" style="overflow-x: auto">
-    <h1>Deposits</h1>
-    <table class="table table-borderless">
-      <thead>
-        <tr>
-          <th scope="col">Email</th>
-          <th scope="col">Amount</th>
-          <th scope="col">Coin Address / Description</th>
-          <th scope="col">Transaction Id / Hash</th>
-          <th scope="col">Status</th>
-          <th scope="col">Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for deposit in deposits %}
-        <tr>
-          <td>{{request.user.email}}</td>
-          <td>{{deposit.amount}}</td>
-          <td>{{deposit.wallet_address}}</td>
-          <td>{{deposit.transaction_hash}}</td>
-          <td>{{deposit.get_status_display}}</td>
-          <td>{{deposit.date}}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">

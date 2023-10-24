@@ -752,7 +752,8 @@ eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a
     <!-- Main JS -->
     <script src="{% static 'assets2/js/main.js' %}"></script>
     <script src="{% static 'assets2/js/plugins/particles.js' %}"></script>
-
+    {% block extrascript %}
+    {% endblock %}
 
 <!-- Smartsupp Live Chat script -->
 <script type="text/javascript">
