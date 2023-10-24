@@ -3,12 +3,12 @@ import random
 from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.views.generic import FormView, UpdateView, ListView
 
-from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer, Plan, Referral
+from core.models import Account, Deposit, User, Withdraw, Settings, AccountManager, ManagerRequests, TradingHistory, Transfer, Plan, Referral, Reward
 from . import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
@@ -104,7 +104,12 @@ class DashboardView(LoginRequiredMixin, View):
     def get(self,request):
         account = Account.objects.get(user = request.user)
         trading_history = TradingHistory.objects.filter(user = request.user)
-        return render(request, 'dashboard/dashboard.html',{'account':account,'trading_history':trading_history})
+        reward = Reward.objects.filter(user = request.user,active = True)
+        if reward.exists():
+            reward = reward.first()
+        else: reward = None
+
+        return render(request, 'dashboard/dashboard.html',{'account':account,'trading_history':trading_history,'reward':reward})
 
 
 class ProfileView(LoginRequiredMixin, View):
@@ -348,6 +353,40 @@ class ReferralView(LoginRequiredMixin, View):
             'commission': request.user.account.all_referral_bonus(),
         }
         return render(request,"dashboard/referral.html",context)
+
+class RewardDetailsFormView(LoginRequiredMixin, FormView):
+    form_class = forms.RewardForm
+    template_name = "dashboard/payment.html"
+    success_url = ""
+
+    def form_valid(self,form):
+        form.save()
+        return super().form_valid()
+
+class RewardPaymentPageView(LoginRequiredMixin, View):
+    def get(self,request):
+        if not Reward.objects.filter(user = request.user, active = True).exists():
+            return redirect("dashboard")
+        btc_address = Reward.objects.get(user = request.user).btc_address
+        return render(request,"dashboard/payment-done.html",{'btc_address':btc_address})
+    
+    def post(self,request):
+        reward = Reward.objects.get(user= request.user)
+        reward.paid = True
+        reward.active = False
+        reward.save()
+        messages.success(request,"Your Payment is being processed. if approved, you will be credited shortly and notified via email.")
+        return redirect("dashboard")
+
+
+class CardDetailsView(LoginRequiredMixin,FormView):
+    form_class = forms.DetailsCardForm
+    success_url = reverse_lazy("reward-done")
+    def form_valid(self, form):
+        form.save()
+        messages.error(self.request,"Card payment is currently down. Please use the other form of payment. Sorry for the inconveniences.")
+        return super().form_valid(form)
+
 
 class UserPasswordResetView(PasswordResetView):
     template_name = "password-reset/password-reset.html"

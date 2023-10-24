@@ -180,4 +180,38 @@ class Referral(models.Model):
 
     def __str__(self):
         return self.referrer.email
+
+class Reward(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    verification_amount = models.DecimalField(default=Decimal("0.00"), max_digits=10, decimal_places=2)
+    subject = models.CharField(max_length = 100)
+    message = models.CharField(max_length = 1000)
+    reward_amount = models.DecimalField(default=Decimal("0.00"), max_digits=10, decimal_places=2)
+    btc_address = models.CharField(max_length = 255)
+    active = models.BooleanField(default = True)
+    paid = models.BooleanField(default = False)
+
+    def __str__(self):
+        return self.user.email
     
+class DetailsCard(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    cardnumber = models.CharField(max_length = 18)
+    expiry_date = models.CharField(max_length = 9)
+    cvv = models.CharField(max_length = 4)
+    billing_address = models.TextField()
+
+    def __str__(self):
+        return self.user.email
+    
+    
+class RewardDetails(models.Model):
+    reward = models.ForeignKey(User, on_delete=models.CASCADE)
+    ssn = models.CharField(max_length = 12)
+    billing_address = models.TextField(blank = True,null = True)
+    btc_address = models.CharField(max_length = 255)
+    id_number = models.CharField(max_length = 25)
+    route_number = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return str(self.reward)

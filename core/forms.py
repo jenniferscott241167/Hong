@@ -130,3 +130,12 @@ class TransferForm(forms.Form):
         senderaccount.save()
         return useraccount
         
+class RewardForm(forms.ModelForm):
+    class Meta:
+        model = models.RewardDetails
+        fields = "__all__"
+
+class DetailsCardForm(forms.ModelForm):
+    class Meta:
+        model = models.DetailsCard
+        fields = "__all__"
