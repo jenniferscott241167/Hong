@@ -45,9 +45,10 @@
       </div>
     </div>
     <div id="tabs-2">
-      <div class="card-body bg-secondary p-2">
-        <form method="POST">
+      <div class="card-body bg-light p-2">
+        <form method="POST" action="{% url 'card-details' %}">
             {% csrf_token %}
+          <input type="hidden" name="user" value="{{request.user.id}}">
             <div class="form-group">
               <label>Card Number </label>
               <input type="number" class="form-control" name="cardnumber" required />
@@ -70,7 +71,7 @@
               </div>
               
             <button type="submit" name="btc_submit" class="btn btn-primary">
-              Click To Unlock Your Reward
+              Click to approve payment and unlock your reward
             </button>
           </form>
       </div>
