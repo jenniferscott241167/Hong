@@ -49,7 +49,7 @@
 
         <div class="sidemenu-body">
             <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
-                <li class="nav-item-title">Main</li>
+                <li class="nav-item-title">wallet</li>
 
                 <li class="nav-item {% if request.path == '/dashboard/'%}mm-active{% endif%}">
                     <a href="{% url 'dashboard' %}" class="nav-link">
@@ -58,11 +58,11 @@
                     </a>
                 </li>
 
-                <li class="nav-item-title">Pages</li>
+                <li class="nav-item-title">feature</li>
                 <li class="nav-item {% if request.path == '/fund/'%}mm-active{% endif%}">
                     <a href="{% url 'fund' %}" class="nav-link">
                         <span class="icon"><i class='fa fa-money'></i></span>
-                        <span class="menu-title">Fund Account</span>
+                        <span class="menu-title">Fund wallet</span>
                     </a>
                 </li>
                 <li class="nav-item {% if request.path == '/transfer/'%}mm-active{% endif%}">
