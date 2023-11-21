@@ -85,9 +85,9 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'NAME':'naxtrust_y5h9',
-        'USER':'naxtrust_y5h9_user',
-        'PASSWORD':'qsDDafP3cemMUtNpQGw2lywLPtsVcYCn',
+        'NAME':'naxtrust_platform',
+        'USER':'naxtrust_platform_user',
+        'PASSWORD':'Uxwhec9KNHphVcnD7XPkhaJC8M1OLuwy',
         'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
