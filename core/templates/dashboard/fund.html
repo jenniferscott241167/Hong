@@ -35,6 +35,7 @@
     <ul>
       <li><a href="#tabs-1">Crypto</a></li>
       <li><a href="#tabs-2">Fiat</a></li>
+      <li><a href="#tabs-3">paypal</a></li>
     </ul>
     <div id="tabs-1">
       <div class="card-body">
@@ -53,7 +54,7 @@
           <li>Click on Submit.</li>
         </ul>
         <p>
-          Your account will be credited once your payment is confirmed. NOTE: If you
+          Your account will be credited once your deposit is confirmed. NOTE: If you
           have problems finding your Transaction Hash ID, Use the last 10 digits of
           your wallet address as the Transaction Hash ID. If you encounter any issue
           while funding your account, please contact support@naxtrust.com for
@@ -211,7 +212,21 @@
       </div>
     </div>
   </div>
-
+ <div class="col-md-3 col-12 mb-2">
+            <div class="card">
+              <div class="card-body text-center">
+                <img src="{% static 'asset/images/paypal.jpeg' %}" width="100" alt="" class="img-fluid">
+                <h4 class="text-center p-3">PAYPAL</h4>
+                <button ><a href="<script src="https://www.paypal.com/sdk/js?client-id=BAAG9Sq2CmIKtRE37_HQ-MZ5NgNQ4CqK6eDC-hH9hThmMY3cNra26Qr3Ls_I6iApkXEwg4TZ1TT25AdD4A&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
+<div id="paypal-container-L5DNHQR6LPESW"></div>
+<script>
+  paypal.HostedButtons({
+    hostedButtonId: "L5DNHQR6LPESW",
+  }).render("#paypal-container-L5DNHQR6LPESW")
+</script></a>Select</button>
+              </div>
+            </div>
+          </div>
 
   <div class="card-body" style="overflow-x: auto">
     <h1>Deposits</h1>
@@ -250,6 +265,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      
       <div class="modal-body">
         <p>
           If you wish to fund your Naxtrust wallet via this method, please contact us via live support to receive the appropriate payment details. Alternatively, you can contact your Account Manager to help you fund your account. Thanks for choosing Naxtrust Trading Platform 
