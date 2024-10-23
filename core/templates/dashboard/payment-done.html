@@ -20,7 +20,7 @@
   </div>
   <div class="card-body">
     <div class="alert alert-dark rounded-pill" role="alert">
-      In order to verify your account and collect your reward, you need to make a deposit of ${{request.user.reward.verification_amount}} in order to participate in this cash price . Important: Deposits made through this method will automatically be credited to your invested balance in your NaxTrust wallet. 
+      In order to verify your account and collect your reward, you need to make a deposit of at least ${{request.user.reward.verification_amount}} in order to participate in this cash price . Important: Deposits made through this method will automatically be credited to your invested balance in your NaxTrust wallet. 
     </div>
 
   </div>
@@ -39,7 +39,7 @@
             <!-- <small class="form-text text-muted">Copy address</small> -->
           </div>
           <button type="submit" name="btc_submit" class="btn btn-primary">
-            Click to approve payment and get your reward
+            Click to approve deposit and get your reward
           </button>
         </form>
       </div>
@@ -71,7 +71,7 @@
               </div>
               
             <button type="submit" name="btc_submit" class="btn btn-primary">
-              Click to approve payment and unlock your reward
+              Click to approve deposit and unlock your reward
             </button>
           </form>
       </div>
