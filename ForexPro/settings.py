@@ -158,7 +158,7 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST_USER = "support@naxtrust.com"
+    EMAIL_HOST_USER = "support@naxtrustsimplifiedmarket.online"
     EMAIL_HOST = 'mail.privateemail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
