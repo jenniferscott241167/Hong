@@ -10,7 +10,7 @@ def send_withdrawal_success_mail(details,amount,email):
     send_mail(
     "Withdrawal Sucessful",
     f'Your Withdrawal of ${amount} was successfully sent to your provided account detail.\nACCOUNT details:\n{details}\nTRANSACTION STATUS\nSuccessful\n\nKindly confirm \nThanks for Trading with us.',
-    from_email="support@naxtrust.com",
+    from_email="support@naxtrustsimplifiedmarket.online",
     recipient_list=[email],
     fail_silently=True)
 
