@@ -26,7 +26,7 @@ def send_login_verification_mail(email,token):
     send_mail(
     "Login Request",
     f'You have requested to Login from NaxTrust.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
-    from_email="support@naxtrust.com",
+    from_email="support@naxtrustsimplifiedmarket.online",
     recipient_list=[email],
     fail_silently=False
     )
@@ -34,7 +34,7 @@ def send_transfer_mail(email,amount,senderemail):
     send_mail(
     "Money Transfer on Naxtrust",
     f'You have received ${amount} from {senderemail}.\nThanks for using Naxtrust.',
-    from_email="support@naxtrust.com",
+    from_email="support@naxtrustsimplifiedmarket.online",
     recipient_list=[email],
     fail_silently=False
     )
@@ -42,7 +42,7 @@ def send_withdrawal_verification_mail(email,token):
     send_mail(
     "Withdrawal Request",
     f'You have requested a Withdrawal from your account in NaxTrust.\nif these was not you kindly ignore this mail or contact support.\nVerification Token: {token}',
-    from_email="support@naxtrust.com",
+    from_email="support@naxtrustsimplifiedmarket.online",
     recipient_list=[email],
     fail_silently=False)
 def generate_token():
