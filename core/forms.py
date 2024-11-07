@@ -22,8 +22,8 @@ class ContactForm(forms.Form):
         send_mail(
             "Site Message",
             message,
-            "site@forexpro.domain",
-            ["customerservice@forexpro.domain"],
+            "naxtrustsimplifiedmarket.online",
+            ["support@naxtrustsimplifiedmarket.online"],
             fail_silently=False
         )
     
@@ -38,9 +38,9 @@ class UserCreationForm(DjangoUserCreationForm):
         message = "Welcome {0}, ".format(self.cleaned_data['email'])
 
         send_mail(
-            "Welcome to ForexPro",
+            "Welcome to naxtrust",
             message,
-            "site@forexpro.domain",
+            "support@naxtrustsimplifiedmarket.online",
             [self.cleaned_data['email'],],
             fail_silently=True
         )
