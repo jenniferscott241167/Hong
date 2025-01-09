@@ -85,9 +85,9 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'NAME':'dex_ud6r',
-        'USER':'dex_ud6r_user',
-        'PASSWORD':'ustyfWnRA7BrhYRmHhSY1lFwSK807TZQ',
+        'NAME':'demux',
+        'USER':'demux_user',
+        'PASSWORD':'NTKcqcCbgRBUiTuIolABJmhxLUdSva1Q',
         'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
