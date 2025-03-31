@@ -87,7 +87,7 @@ DATABASES = {
         'ENGINE':'django.db.backends.postgresql',
         'NAME':'naxbo',
         'USER':'naxbo_user',
-        'YDkIKaE7zBJ5MYoMDlJcNrguwoneMHCy',
+        'PASSWORD': 'YDkIKaE7zBJ5MYoMDlJcNrguwoneMHCy',
         'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
