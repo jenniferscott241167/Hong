@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ls*0)#zozb^h@cx$)d1!669z1d8_4=%6skv5_9%+n@rrs*8zaq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','www.naxtrustsimplifiedmarkets.online','www.naxtrustsimplifiedmarket.online','naxtrustsimplifiedmarket.online','https://dex-sebr.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1','www.nextrustsimplifiedmarket.online','www.nextrustsimplifiedmarket.online','naxtrustsimplifiedmarket.online','https://dex-sebr.onrender.com']
 
 
 # Application definition
@@ -158,7 +158,7 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST_USER = "support@naxtrustsimplifiedmarket.online"
+    EMAIL_HOST_USER = "support@nextrustsimplifiedmarket.online"
     EMAIL_HOST = 'mail.privateemail.com'
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
