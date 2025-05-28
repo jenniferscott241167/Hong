@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ls*0)#zozb^h@cx$)d1!669z1d8_4=%6skv5_9%+n@rrs*8zaq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','www.nextrustsimplifiedmarket.online','www.nextrustsimplifiedmarket.online','naxtrustsimplifiedmarket.online','https://hong-2oa0.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1','www.nextrustsimplifiedmarket.online','https://www.nextrustsimplifiedmarket.online','naxtrustsimplifiedmarket.online','https://www.hong-2oa0.onrender.com']
 
 
 # Application definition
