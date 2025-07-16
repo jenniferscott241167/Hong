@@ -85,9 +85,9 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'NAME':'gbou',
-        'USER':'gbou_user',
-        'PASSWORD': 'YWveuf5lWnjrJiPwBcQZOnKbFioNKses',
+        'NAME':'hong_534g',
+        'USER':'hong_534g_user',
+        'PASSWORD': '6nBfBa5n4V7KufQRKZe3tBqgrGkO6Hml',
         'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
