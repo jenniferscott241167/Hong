@@ -85,9 +85,9 @@ DATABASES = {
     # }
     'default':{
         'ENGINE':'django.db.backends.postgresql',
-        'NAME':'hong1',
-        'USER':'hong1_user',
-        'PASSWORD': 'leJcBXwspiEv1roYtGPoMgESodfX274v',
+        'NAME':'hong1_lpfp',
+        'USER':'hong1_lpfp_user',
+        'PASSWORD': 'OFF9xosiHOOeKcGUSGRz7PjIP9KCsuVA',
         'HOST':'oregon-postgres.render.com',
         'PORT':'5432',
     }
